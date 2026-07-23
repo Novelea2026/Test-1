@@ -2,7 +2,6 @@ const supabaseUrl = "https://ccmhegxkxyqemqbnqvro.supabase.co";
 
 const supabaseKey = "sb_publishable_cGdgaq80rMC3tuARMGgNDA_gzgPTmtT";
 
-
 const client = supabase.createClient(
     supabaseUrl,
     supabaseKey
@@ -34,7 +33,5 @@ async function login() {
 
     console.log("Login gelukt:", data);
 
-
     window.location.href = "dashboard.html";
-
 }
