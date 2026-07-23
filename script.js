@@ -1,9 +1,3 @@
-// =========================
-// PIE-NONG-THAI
-// SUPABASE MENU LADEN
-// =========================
-
-
 const supabaseUrl = "https://ccmhegxkxyqemqbnqvro.supabase.co";
 
 const supabaseKey = "sb_publishable_cGdgaq80rMC3tuARMGgNDA_gzgPTmtT";
@@ -16,10 +10,7 @@ const client = supabase.createClient(
 
 
 
-
-
 async function laadMenu() {
-
 
     const menu = document.getElementById("prijzen");
 
@@ -31,30 +22,42 @@ async function laadMenu() {
 
 
     const { data, error } = await client
-
         .from("Prijzen")
-
         .select("*")
-
         .order("id");
-
 
 
 
     if (error) {
 
-
         console.log(error);
 
-
         menu.innerHTML =
-
         "<p>Menu kan niet geladen worden.</p>";
 
-
         return;
-
     }
+
+
+
+    let categorieen = {};
+
+
+
+    data.forEach(gerecht => {
+
+
+        if (!categorieen[gerecht.categorie]) {
+
+            categorieen[gerecht.categorie] = [];
+
+        }
+
+
+        categorieen[gerecht.categorie].push(gerecht);
+
+
+    });
 
 
 
@@ -64,49 +67,114 @@ async function laadMenu() {
 
 
 
-
-    data.forEach(gerecht => {
-
+    Object.keys(categorieen).forEach(categorie => {
 
 
         html += `
 
-        <div class="menu-card">
+        <div class="menu-categorie">
+
+            <h2>
+                ${categorie}
+            </h2>
+
+        `;
 
 
-            <h3>
-                ${gerecht.naam}
-            </h3>
+
+        let gerechten = {};
 
 
-            <p class="menu-price">
 
-                € ${Number(gerecht.prijs)
-                .toFixed(2)
-                .replace(".", ",")}
+        categorieen[categorie].forEach(item => {
 
-            </p>
 
+            if (!gerechten[item.naam]) {
+
+                gerechten[item.naam] = [];
+
+            }
+
+
+            gerechten[item.naam].push(item);
+
+
+        });
+
+
+
+
+        Object.keys(gerechten).forEach(naam => {
+
+
+            html += `
+
+            <div class="menu-card">
+
+                <h3>
+                    ${naam}
+                </h3>
+
+
+            `;
+
+
+
+            gerechten[naam].forEach(variant => {
+
+
+                html += `
+
+                <div class="variant">
+
+                    <span>
+                        ${variant.variant}
+                    </span>
+
+
+                    <span class="menu-price">
+
+                        € ${Number(variant.prijs)
+                        .toFixed(2)
+                        .replace(".", ",")}
+
+                    </span>
+
+                </div>
+
+                `;
+
+
+            });
+
+
+
+            html += `
+
+            </div>
+
+            `;
+
+
+        });
+
+
+
+        html += `
 
         </div>
 
         `;
 
 
-
     });
-
-
 
 
 
     menu.innerHTML = html;
 
 
-
 }
-
-
 
 
 
