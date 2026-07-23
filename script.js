@@ -9,7 +9,7 @@ async function laadPrijzen() {
     const prijzenDiv = document.getElementById("prijzen");
 
     const { data, error } = await client
-        .from("prijzen")
+        .from("Prijzen")
         .select("*");
 
     if (error) {
