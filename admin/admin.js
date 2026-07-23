@@ -2,175 +2,431 @@ const supabaseUrl = "https://ccmhegxkxyqemqbnqvro.supabase.co";
 
 const supabaseKey = "sb_publishable_cGdgaq80rMC3tuARMGgNDA_gzgPTmtT";
 
+
 const client = supabase.createClient(
     supabaseUrl,
     supabaseKey
 );
 
 
-// ======================
-// LOGIN
-// ======================
 
-async function login() {
+
+
+// =================================
+// LOGIN
+// =================================
+
+
+async function login(){
+
 
     const email = document.getElementById("email").value;
+
     const password = document.getElementById("password").value;
 
 
+
+
     const { data, error } = await client.auth.signInWithPassword({
+
         email: email,
+
         password: password
+
     });
 
 
-    if (error) {
+
+
+
+    if(error){
+
 
         document.getElementById("melding").innerHTML =
-            "Login mislukt: " + error.message;
+
+        "Login mislukt: " + error.message;
+
 
         console.log(error);
 
+
         return;
+
     }
 
 
-    console.log("Ingelogd:", data);
+
 
     window.location.href = "dashboard.html";
+
 
 }
 
 
 
-// ======================
-// PRIJZEN LADEN
-// ======================
-
-async function laadDashboard() {
-
-    const prijzenDiv = document.getElementById("prijzen");
 
 
-    if (!prijzenDiv) {
+
+
+// =================================
+// MENU LADEN ADMIN
+// =================================
+
+
+async function laden(){
+
+
+    const lijst = document.getElementById("lijst");
+
+
+    if(!lijst){
+
         return;
+
     }
 
 
-    const { data, error } = await client
-        .from("Prijzen")
-        .select("*")
-        .order("id");
 
 
-    if (error) {
+    const {data,error} = await client
+
+    .from("Prijzen")
+
+    .select("*")
+
+    .order("id");
+
+
+
+
+
+    if(error){
+
 
         console.log(error);
 
-        prijzenDiv.innerHTML =
-            "Fout bij laden van prijzen.";
+
+        lijst.innerHTML =
+
+        "Kan menu niet laden";
+
 
         return;
+
     }
+
+
+
+
 
 
     let html = "";
 
 
+
+
+
     data.forEach(item => {
 
+
+
         html += `
-            <div class="prijs-item">
 
-                <strong>${item.naam}</strong>
 
-                <br>
+        <div class="admin-item">
 
-                € 
-                <input 
-                    class="prijs-input"
-                    data-id="${item.id}"
-                    type="number"
-                    value="${item.prijs}"
-                >
 
-            </div>
+            <h3>
+
+            ${item.naam}
+
+            </h3>
+
+
+
+            <p>
+
+            ${item.beschrijving || ""}
+
+            </p>
+
+
+
+            <p>
+
+            ${item.variant}
+
+            -
+
+            € ${Number(item.prijs)
+            .toFixed(2)
+            .replace(".", ",")}
+
+            </p>
+
+
+
+            <small>
+
+            ${item.categorie}
+
+            </small>
+
+
+
+            <br><br>
+
+
+
+            <button onclick="verwijderen(${item.id})">
+
+                Verwijderen
+
+            </button>
+
+
+
+        </div>
+
+
         `;
+
+
 
     });
 
 
-    prijzenDiv.innerHTML = html;
+
+
+
+    lijst.innerHTML = html;
+
+
 
 }
 
 
 
-// ======================
-// PRIJZEN OPSLAAN
-// ======================
-
-async function opslaanPrijzen() {
-
-
-    const inputs = document.querySelectorAll(".prijs-input");
-
-
-    for (const input of inputs) {
-
-
-        const id = input.dataset.id;
-
-        const nieuwePrijs = Number(input.value);
 
 
 
-        const { error } = await client
-            .from("Prijzen")
-            .update({
-                prijs: nieuwePrijs
-            })
-            .eq("id", id);
+
+
+// =================================
+// GERECHT TOEVOEGEN
+// =================================
+
+
+async function toevoegen(){
 
 
 
-        if (error) {
+    const naam = document.getElementById("naam").value;
 
-            console.log(error);
 
-            document.getElementById("melding").innerHTML =
-                "❌ Opslaan mislukt.";
+    const beschrijving = document.getElementById("beschrijving").value;
 
-            return;
 
-        }
+    const categorie = document.getElementById("categorie").value;
+
+
+    const variant = document.getElementById("variant").value;
+
+
+    const prijs = document.getElementById("prijs").value;
+
+
+
+
+
+
+
+    if(!naam || !prijs){
+
+
+        document.getElementById("melding").innerHTML =
+
+        "Vul minimaal naam en prijs in.";
+
+
+        return;
+
 
     }
 
 
 
+
+
+
+
+    const {data,error} = await client
+
+    .from("Prijzen")
+
+    .insert([{
+
+
+        naam: naam,
+
+
+        beschrijving: beschrijving,
+
+
+        categorie: categorie,
+
+
+        variant: variant,
+
+
+        prijs: Number(prijs)
+
+
+
+    }]);
+
+
+
+
+
+
+
+
+    if(error){
+
+
+
+        console.log(error);
+
+
+
+        document.getElementById("melding").innerHTML =
+
+        "Toevoegen mislukt";
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+
     document.getElementById("melding").innerHTML =
-        "✅ Prijzen opgeslagen!";
+
+    "Gerecht toegevoegd!";
+
+
+
+
+
+
+    // velden leegmaken
+
+
+    document.getElementById("naam").value="";
+
+    document.getElementById("beschrijving").value="";
+
+    document.getElementById("prijs").value="";
+
+
+
+
+
+    laden();
+
+
 
 }
 
 
 
-// ======================
-// UITLOGGEN
-// ======================
-
-async function uitloggen() {
 
 
-    await client.auth.signOut();
 
 
-    window.location.href = "login.html";
+
+// =================================
+// VERWIJDEREN
+// =================================
+
+
+async function verwijderen(id){
+
+
+
+    const bevestiging = confirm(
+
+        "Weet je zeker dat je dit gerecht wilt verwijderen?"
+
+    );
+
+
+
+    if(!bevestiging){
+
+        return;
+
+    }
+
+
+
+
+
+
+
+    const {error} = await client
+
+    .from("Prijzen")
+
+    .delete()
+
+    .eq("id", id);
+
+
+
+
+
+
+
+    if(error){
+
+
+        console.log(error);
+
+
+        alert("Verwijderen mislukt");
+
+
+        return;
+
+
+    }
+
+
+
+
+
+
+    laden();
+
+
 
 }
 
 
 
-// Dashboard automatisch laden
-laadDashboard();
+
+
+
+// =================================
+// START
+// =================================
+
+
+laden();
