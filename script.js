@@ -1,40 +1,113 @@
+// =========================
+// PIE-NONG-THAI
+// SUPABASE MENU LADEN
+// =========================
+
+
 const supabaseUrl = "https://ccmhegxkxyqemqbnqvro.supabase.co";
+
 const supabaseKey = "sb_publishable_cGdgaq80rMC3tuARMGgNDA_gzgPTmtT";
 
-const { createClient } = supabase;
 
-const client = createClient(supabaseUrl, supabaseKey);
+const client = supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+);
 
-async function laadPrijzen() {
-    const prijzenDiv = document.getElementById("prijzen");
+
+
+
+
+async function laadMenu() {
+
+
+    const menu = document.getElementById("prijzen");
+
+
+    if (!menu) {
+        return;
+    }
+
+
 
     const { data, error } = await client
+
         .from("Prijzen")
-        .select("*");
+
+        .select("*")
+
+        .order("id");
+
+
+
 
     if (error) {
-        console.error(error);
-        prijzenDiv.innerHTML = "<p>Fout bij het laden van de prijzen.</p>";
+
+
+        console.log(error);
+
+
+        menu.innerHTML =
+
+        "<p>Menu kan niet geladen worden.</p>";
+
+
         return;
+
     }
 
-    if (data.length === 0) {
-        prijzenDiv.innerHTML = "<p>Er zijn nog geen prijzen toegevoegd.</p>";
-        return;
-    }
+
+
+
 
     let html = "";
 
-    data.forEach(item => {
+
+
+
+    data.forEach(gerecht => {
+
+
+
         html += `
-            <div class="prijs">
-                <h3>${item.naam}</h3>
-                <p>€${item.prijs}</p>
-            </div>
+
+        <div class="menu-card">
+
+
+            <h3>
+                ${gerecht.naam}
+            </h3>
+
+
+            <p class="menu-price">
+
+                € ${Number(gerecht.prijs)
+                .toFixed(2)
+                .replace(".", ",")}
+
+            </p>
+
+
+        </div>
+
         `;
+
+
+
     });
 
-    prijzenDiv.innerHTML = html;
+
+
+
+
+    menu.innerHTML = html;
+
+
+
 }
 
-laadPrijzen();
+
+
+
+
+laadMenu();
