@@ -2,39 +2,194 @@
 <html lang="nl">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+
+
+    <title>Pie-Nong-Thai Admin</title>
+
+
     <link rel="stylesheet" href="admin.css">
+
 </head>
+
 
 <body>
 
-    <div class="dashboard">
 
-        <h1>🍜 Admin Dashboard</h1>
+<div class="dashboard">
 
-        <h2>Prijzen aanpassen</h2>
 
-        <div id="prijzen">
-            Prijzen laden...
+    <h1>
+
+        🍜 Pie-Nong-Thai Menu Beheer
+
+    </h1>
+
+
+
+    <section class="add-box">
+
+
+        <h2>
+
+            Nieuw gerecht toevoegen
+
+        </h2>
+
+
+
+        <input 
+        id="naam"
+        type="text"
+        placeholder="Naam gerecht">
+
+
+
+        <input 
+        id="beschrijving"
+        type="text"
+        placeholder="Beschrijving">
+
+
+
+        <select id="categorie">
+
+
+            <option value="Voorgerechten">
+                Voorgerechten
+            </option>
+
+
+            <option value="Soepen">
+                Soepen
+            </option>
+
+
+            <option value="Pikante salades">
+                Pikante salades
+            </option>
+
+
+            <option value="Gerechten met witte rijst">
+                Gerechten met witte rijst
+            </option>
+
+
+            <option value="Gerechten met noodles">
+                Gerechten met noodles
+            </option>
+
+
+        </select>
+
+
+
+
+        <select id="variant">
+
+
+            <option value="Kip">
+                Kip
+            </option>
+
+
+            <option value="Garnalen">
+                Garnalen
+            </option>
+
+
+            <option value="Tofu">
+                Tofu
+            </option>
+
+
+            <option value="Biefstuk">
+                Biefstuk
+            </option>
+
+
+        </select>
+
+
+
+
+
+        <input
+
+        id="prijs"
+
+        type="number"
+
+        step="0.01"
+
+        placeholder="Prijs bijvoorbeeld 12.50">
+
+
+
+
+
+
+        <button onclick="toevoegen()">
+
+            + Toevoegen
+
+        </button>
+
+
+
+    </section>
+
+
+
+
+
+
+
+    <section>
+
+
+        <h2>
+
+            Huidig menu
+
+        </h2>
+
+
+
+        <div id="lijst">
+
+            Menu laden...
+
         </div>
 
-        <button onclick="opslaanPrijzen()">
-            💾 Opslaan
-        </button>
 
-        <button onclick="uitloggen()">
-            🚪 Uitloggen
-        </button>
 
-        <p id="melding"></p>
+    </section>
 
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="admin.js"></script>
+
+
+    <p id="melding"></p>
+
+
+
+</div>
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script src="admin.js"></script>
+
 
 </body>
+
 
 </html>
