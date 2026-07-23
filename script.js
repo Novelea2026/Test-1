@@ -1,25 +1,40 @@
 const supabaseUrl = "https://ccmhegxkxyqemqbnqvro.supabase.co";
-const supabaseKey = "HIER_JE_PUBLISHABLE_KEY";
+const supabaseKey = "sb_publishable_cGdgaq80rMC3tuARMGgNDA_gzgPTmtT";
 
-const client = supabase.createClient(supabaseUrl, supabaseKey);
+const { createClient } = supabase;
+
+const client = createClient(supabaseUrl, supabaseKey);
 
 async function laadPrijzen() {
+    const prijzenDiv = document.getElementById("prijzen");
+
     const { data, error } = await client
         .from("prijzen")
         .select("*");
 
     if (error) {
         console.error(error);
+        prijzenDiv.innerHTML = "<p>Fout bij het laden van de prijzen.</p>";
+        return;
+    }
+
+    if (data.length === 0) {
+        prijzenDiv.innerHTML = "<p>Er zijn nog geen prijzen toegevoegd.</p>";
         return;
     }
 
     let html = "";
 
     data.forEach(item => {
-        html += `<p>${item.naam} - €${item.prijs}</p>`;
+        html += `
+            <div class="prijs">
+                <h3>${item.naam}</h3>
+                <p>€${item.prijs}</p>
+            </div>
+        `;
     });
 
-    document.getElementById("prijzen").innerHTML = html;
+    prijzenDiv.innerHTML = html;
 }
 
 laadPrijzen();
