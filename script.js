@@ -10,33 +10,102 @@ const client = supabase.createClient(
 
 
 
+
+
+// ===============================
+// MENU LADEN
+// ===============================
+
+
 async function laadMenu() {
+
 
     const menu = document.getElementById("prijzen");
 
 
     if (!menu) {
+
         return;
+
     }
 
 
 
+    // Loading
+
+    menu.innerHTML = `
+
+        <div class="loading">
+
+            🍜 Menu wordt geladen...
+
+        </div>
+
+    `;
+
+
+
+
+
     const { data, error } = await client
+
         .from("Prijzen")
+
         .select("*")
-        .order("id");
+
+        .order("id", { ascending: true });
+
+
 
 
 
     if (error) {
 
+
         console.log(error);
 
-        menu.innerHTML =
-        "<p>Menu kan niet geladen worden.</p>";
+
+        menu.innerHTML = `
+
+        <p>
+
+            Het menu kon niet geladen worden.
+
+            Probeer later opnieuw.
+
+        </p>
+
+        `;
+
 
         return;
+
     }
+
+
+
+
+
+    if (!data || data.length === 0) {
+
+
+        menu.innerHTML = `
+
+        <p>
+
+            Er zijn momenteel geen gerechten beschikbaar.
+
+        </p>
+
+        `;
+
+
+        return;
+
+    }
+
+
+
 
 
 
@@ -44,20 +113,35 @@ async function laadMenu() {
 
 
 
+
+
+    // Gerechten verdelen per categorie
+
     data.forEach(gerecht => {
 
 
-        if (!categorieen[gerecht.categorie]) {
 
-            categorieen[gerecht.categorie] = [];
+        const categorie = gerecht.categorie || "Menu";
+
+
+
+        if (!categorieen[categorie]) {
+
+
+            categorieen[categorie] = [];
+
 
         }
 
 
-        categorieen[gerecht.categorie].push(gerecht);
+
+        categorieen[categorie].push(gerecht);
+
 
 
     });
+
+
 
 
 
@@ -67,18 +151,27 @@ async function laadMenu() {
 
 
 
+
+
     Object.keys(categorieen).forEach(categorie => {
+
 
 
         html += `
 
         <div class="menu-categorie">
 
+
             <h2>
+
                 ${categorie}
+
             </h2>
 
         `;
+
+
+
 
 
 
@@ -86,20 +179,32 @@ async function laadMenu() {
 
 
 
+
+
+
         categorieen[categorie].forEach(item => {
+
 
 
             if (!gerechten[item.naam]) {
 
+
                 gerechten[item.naam] = [];
 
+
             }
+
 
 
             gerechten[item.naam].push(item);
 
 
+
         });
+
+
+
+
 
 
 
@@ -107,75 +212,154 @@ async function laadMenu() {
         Object.keys(gerechten).forEach(naam => {
 
 
+
+            const eerste = gerechten[naam][0];
+
+
+
             html += `
+
 
             <div class="menu-card">
 
+
                 <h3>
+
                     ${naam}
+
                 </h3>
+
 
 
             `;
 
 
 
-            gerechten[naam].forEach(variant => {
+
+
+
+            // Beschrijving tonen
+
+            if (eerste.beschrijving) {
+
 
 
                 html += `
 
+
+                <p class="menu-description">
+
+                    ${eerste.beschrijving}
+
+                </p>
+
+
+                `;
+
+
+            }
+
+
+
+
+
+
+
+
+            // Varianten tonen
+
+
+            gerechten[naam].forEach(variant => {
+
+
+
+                html += `
+
+
                 <div class="variant">
 
+
                     <span>
+
                         ${variant.variant}
+
                     </span>
+
 
 
                     <span class="menu-price">
 
+
                         € ${Number(variant.prijs)
+
                         .toFixed(2)
+
                         .replace(".", ",")}
+
+
 
                     </span>
 
+
                 </div>
 
+
                 `;
+
 
 
             });
 
 
 
+
+
             html += `
+
 
             </div>
 
+
             `;
+
 
 
         });
 
 
 
+
+
+
         html += `
+
 
         </div>
 
+
         `;
+
 
 
     });
 
 
 
+
+
+
+
     menu.innerHTML = html;
+
 
 
 }
 
 
+
+
+
+
+// Start menu
 
 laadMenu();
