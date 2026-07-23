@@ -1,112 +1,176 @@
 const supabaseUrl = "https://ccmhegxkxyqemqbnqvro.supabase.co";
+
 const supabaseKey = "sb_publishable_cGdgaq80rMC3tuARMGgNDA_gzgPTmtT";
 
-const client = supabase.createClient(supabaseUrl, supabaseKey);
+const client = supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+);
 
-// --------------------
+
+// ======================
 // LOGIN
-// --------------------
+// ======================
+
 async function login() {
 
-    const email = document.getElementById("email")?.value;
-    const password = document.getElementById("password")?.value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-    if (!email || !password) return;
 
-    const { error } = await client.auth.signInWithPassword({
-        email,
-        password
+    const { data, error } = await client.auth.signInWithPassword({
+        email: email,
+        password: password
     });
 
+
     if (error) {
-        document.getElementById("melding").innerText =
+
+        document.getElementById("melding").innerHTML =
             "Login mislukt: " + error.message;
+
+        console.log(error);
+
         return;
     }
 
+
+    console.log("Ingelogd:", data);
+
     window.location.href = "dashboard.html";
+
 }
 
-// --------------------
-// DASHBOARD LADEN
-// --------------------
+
+
+// ======================
+// PRIJZEN LADEN
+// ======================
+
 async function laadDashboard() {
 
     const prijzenDiv = document.getElementById("prijzen");
 
-    if (!prijzenDiv) return;
+
+    if (!prijzenDiv) {
+        return;
+    }
+
 
     const { data, error } = await client
         .from("Prijzen")
         .select("*")
         .order("id");
 
+
     if (error) {
-        prijzenDiv.innerHTML = "Fout bij laden.";
+
         console.log(error);
+
+        prijzenDiv.innerHTML =
+            "Fout bij laden van prijzen.";
+
         return;
     }
 
+
     let html = "";
+
 
     data.forEach(item => {
 
         html += `
-            <div style="margin-bottom:20px;">
-                <strong>${item.naam}</strong><br>
+            <div class="prijs-item">
 
-                € <input
+                <strong>${item.naam}</strong>
+
+                <br>
+
+                € 
+                <input 
                     class="prijs-input"
                     data-id="${item.id}"
                     type="number"
-                    value="${item.prijs}">
+                    value="${item.prijs}"
+                >
+
             </div>
         `;
 
     });
 
-    html += `
-        <button onclick="opslaanPrijzen()">
-            Opslaan
-        </button>
-
-        <p id="melding"></p>
-    `;
 
     prijzenDiv.innerHTML = html;
+
 }
 
-// --------------------
-// OPSLAAN
-// --------------------
+
+
+// ======================
+// PRIJZEN OPSLAAN
+// ======================
+
 async function opslaanPrijzen() {
+
 
     const inputs = document.querySelectorAll(".prijs-input");
 
+
     for (const input of inputs) {
 
-        const id = Number(input.dataset.id);
-        const prijs = Number(input.value);
+
+        const id = input.dataset.id;
+
+        const nieuwePrijs = Number(input.value);
+
+
 
         const { error } = await client
             .from("Prijzen")
-            .update({ prijs: prijs })
+            .update({
+                prijs: nieuwePrijs
+            })
             .eq("id", id);
 
+
+
         if (error) {
+
             console.log(error);
 
-            document.getElementById("melding").innerText =
-                "Opslaan mislukt.";
+            document.getElementById("melding").innerHTML =
+                "❌ Opslaan mislukt.";
 
             return;
+
         }
 
     }
 
-    document.getElementById("melding").innerText =
+
+
+    document.getElementById("melding").innerHTML =
         "✅ Prijzen opgeslagen!";
+
 }
+
+
+
+// ======================
+// UITLOGGEN
+// ======================
+
+async function uitloggen() {
+
+
+    await client.auth.signOut();
+
+
+    window.location.href = "login.html";
+
+}
+
+
 
 // Dashboard automatisch laden
 laadDashboard();
