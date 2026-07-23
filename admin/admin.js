@@ -8,6 +8,8 @@ const client = supabase.createClient(
 );
 
 
+// LOGIN
+
 async function login() {
 
     const email = document.getElementById("email").value;
@@ -15,14 +17,15 @@ async function login() {
 
 
     const { data, error } = await client.auth.signInWithPassword({
-        email: email,
-        password: password
+        email,
+        password
     });
 
 
     if (error) {
+
         document.getElementById("melding").innerHTML =
-            "Login mislukt: " + error.message;
+        "Login mislukt: " + error.message;
 
         return;
     }
@@ -30,3 +33,50 @@ async function login() {
 
     window.location.href = "dashboard.html";
 }
+
+
+
+// DASHBOARD
+
+async function laadDashboard() {
+
+    const prijzenDiv = document.getElementById("prijzen");
+
+    if (!prijzenDiv) {
+        return;
+    }
+
+
+    const { data, error } = await client
+        .from("Prijzen")
+        .select("*");
+
+
+    if (error) {
+        console.log(error);
+        prijzenDiv.innerHTML = "Fout bij laden";
+        return;
+    }
+
+
+    let html = "";
+
+
+    data.forEach(item => {
+
+        html += `
+            <div>
+                <h3>${item.naam}</h3>
+                <input value="${item.prijs}">
+            </div>
+        `;
+
+    });
+
+
+    prijzenDiv.innerHTML = html;
+
+}
+
+
+laadDashboard();
