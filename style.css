@@ -1223,3 +1223,88 @@ footer p{
 
 
 }
+/* =======================================================
+   HERSTEL HERO KLEUREN
+======================================================= */
+
+
+/* Navigatie kleur */
+
+header nav ul li a{
+
+    color:white;
+
+}
+
+
+header nav ul li a:hover{
+
+    color:#D4AF37;
+
+}
+
+
+
+/* Logo */
+
+.logo{
+
+    color:#D4AF37;
+
+}
+
+
+
+
+/* Tekst op hoofdpagina */
+
+.overlay h3{
+
+    color:#D4AF37;
+
+}
+
+
+
+.overlay h1{
+
+    color:white;
+
+}
+
+
+
+.overlay h1 span{
+
+    color:#D4AF37;
+
+}
+
+
+
+.overlay p{
+
+    color:white;
+
+}
+
+
+
+
+/* Knop hoofdpagina */
+
+.button{
+
+    background:#D4AF37;
+
+    color:white;
+
+}
+
+
+
+.button:hover{
+
+    background:#7A1E1E;
+
+}
