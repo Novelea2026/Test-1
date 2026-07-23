@@ -1,6 +1,6 @@
 const supabaseUrl = "https://ccmhegxkxyqemqbnqvro.supabase.co";
 
-const supabaseKey = "JOUW_KEY_HIER";
+const supabaseKey = "sb_publishable_cGdgaq80rMC3tuARMGgNDA_gzgPTmtT;
 
 const client = supabase.createClient(
     supabaseUrl,
@@ -11,7 +11,6 @@ const client = supabase.createClient(
 async function login() {
 
     const email = document.getElementById("email").value;
-
     const password = document.getElementById("password").value;
 
 
@@ -24,13 +23,16 @@ async function login() {
     if (error) {
 
         document.getElementById("melding").innerHTML =
-        "Login mislukt";
+            "Login mislukt: " + error.message;
 
         console.log(error);
 
         return;
     }
 
+
+    // Login gelukt
+    console.log("Ingelogd:", data);
 
     window.location.href = "dashboard.html";
 
