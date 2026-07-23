@@ -21,17 +21,12 @@ async function login() {
 
 
     if (error) {
-
         document.getElementById("melding").innerHTML =
             "Login mislukt: " + error.message;
-
-        console.log(error);
 
         return;
     }
 
-
-    console.log("Login gelukt:", data);
 
     window.location.href = "dashboard.html";
 }
