@@ -1,191 +1,68 @@
 /* =======================================================
-   HERO
+   PIE-NONG-THAI WEBSITE STYLE
 ======================================================= */
 
-.hero{
 
-    position:relative;
-
-    height:100vh;
-
-    overflow:hidden;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-}
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
 
 
-/* Achtergrondfoto */
 
-.hero::before{
+*{
 
-    content:"";
+    margin:0;
 
-    position:absolute;
+    padding:0;
 
-    inset:0;
-
-    background-image:
-    linear-gradient(
-    rgba(0,0,0,.65),
-    rgba(0,0,0,.65)
-    ),
-    url("images/thai-food.jpg");
-
-    background-size:cover;
-
-    background-position:center;
-
-    transform:scale(1.08);
-
-    animation:zoomHero 20s linear infinite;
-
-}
-
-
-/* Donkere laag */
-
-.overlay{
-
-    position:relative;
-
-    z-index:2;
-
-    text-align:center;
-
-    max-width:900px;
-
-    padding:20px;
+    box-sizing:border-box;
 
 }
 
 
 
-/* Kleine tekst */
+html{
 
-.overlay h3{
-
-    color:#D4AF37;
-
-    font-size:22px;
-
-    font-weight:500;
-
-    letter-spacing:8px;
-
-    margin-bottom:20px;
-
-    text-transform:uppercase;
+    scroll-behavior:smooth;
 
 }
 
 
 
-/* Grote titel */
+body{
 
-.overlay h1{
+    font-family:"Poppins",sans-serif;
+
+    color:#333;
+
+    background:#FAF5EB;
+
+}
+
+
+
+h1,
+h2,
+h3{
 
     font-family:"Cinzel",serif;
 
-    color:white;
-
-    font-size:90px;
-
-    line-height:1.1;
-
-    margin-bottom:30px;
-
-    text-shadow:0 15px 40px rgba(0,0,0,.4);
-
 }
 
 
 
-.overlay h1 span{
+.container{
 
-    color:#D4AF37;
+    width:90%;
 
-}
-
-
-
-/* Beschrijving */
-
-.overlay p{
-
-    color:white;
-
-    font-size:22px;
-
-    line-height:1.9;
-
-    max-width:750px;
+    max-width:1200px;
 
     margin:auto;
 
-    margin-bottom:45px;
-
 }
 
 
 
-/* Button */
-
-.button{
-
-    display:inline-block;
-
-    padding:18px 48px;
-
-    background:#D4AF37;
-
-    color:white;
-
-    text-decoration:none;
-
-    border-radius:50px;
-
-    font-size:18px;
-
-    font-weight:600;
-
-    transition:.35s;
-
-}
 
 
-
-.button:hover{
-
-    background:#bb9325;
-
-    transform:translateY(-5px);
-
-}
-
-
-
-/* Animatie */
-
-@keyframes zoomHero{
-
-    0%{
-
-        transform:scale(1.08);
-
-    }
-
-    100%{
-
-        transform:scale(1.18);
-
-    }
-
-}
 /* =======================================================
    NAVIGATIE
 ======================================================= */
@@ -193,7 +70,7 @@
 
 header{
 
-    position:fixed;
+    position:absolute;
 
     top:0;
 
@@ -209,69 +86,49 @@ header{
 
 nav{
 
-    width:100%;
-
     display:flex;
 
     justify-content:space-between;
 
     align-items:center;
 
-    padding:25px 8%;
-
-    background:rgba(20,15,10,0.35);
-
-    backdrop-filter:blur(15px);
-
-    border-bottom:1px solid rgba(212,175,55,.2);
-
-    transition:.4s;
+    padding:25px 5%;
 
 }
 
-
-
-/* Logo */
 
 
 .logo{
 
     font-family:"Cinzel",serif;
 
-    font-size:34px;
+    font-size:30px;
 
     font-weight:700;
 
-    letter-spacing:3px;
-
     color:#D4AF37;
 
-    text-transform:uppercase;
+    white-space:nowrap;
 
 }
 
-
-
-/* Menu */
 
 
 nav ul{
 
     display:flex;
 
-    align-items:center;
-
-    gap:40px;
-
     list-style:none;
+
+    gap:25px;
+
+    align-items:center;
 
 }
 
 
 
 nav ul li a{
-
-    position:relative;
 
     color:white;
 
@@ -281,33 +138,7 @@ nav ul li a{
 
     font-weight:500;
 
-    letter-spacing:.5px;
-
-    transition:.3s;
-
-}
-
-
-
-
-/* gouden lijn onder menu */
-
-
-nav ul li a::after{
-
-    content:"";
-
-    position:absolute;
-
-    left:0;
-
-    bottom:-8px;
-
-    width:0;
-
-    height:2px;
-
-    background:#D4AF37;
+    white-space:nowrap;
 
     transition:.3s;
 
@@ -323,1752 +154,107 @@ nav ul li a:hover{
 
 
 
-nav ul li a:hover::after{
-
-    width:100%;
-
-}
-
-
-
-
-/* ===============================
-   SCROLL EFFECT
-================================ */
-
-
-nav.scrolled{
-
-    background:#15120F;
-
-    padding:18px 8%;
-
-    box-shadow:0 10px 30px rgba(0,0,0,.3);
-
-}
-
-
-
-/* ===============================
-   CONTAINER
-================================ */
-
-
-.container{
-
-    width:100%;
-
-    max-width:1300px;
-
-    margin:auto;
-
-}
-
-
-
-
-
-/* ===============================
-   ALGEMENE TITELS
-================================ */
-
-
-section h2{
-
-    font-family:"Cinzel",serif;
-
-    font-size:48px;
-
-    color:#7A1E1E;
-
-    text-align:center;
-
-    margin-bottom:20px;
-
-}
-
-
-
-.gold-line{
-
-    width:120px;
-
-    height:4px;
-
-    background:#D4AF37;
-
-    margin:25px auto 50px;
-
-    border-radius:10px;
-
-}
-
-
-
-
-/* ===============================
-   ALLE SECTIES
-================================ */
-
-
-section{
-
-    padding:110px 8%;
-
-}
-/* =======================================================
-   OVER ONS
-======================================================= */
-
-
-.about{
-
-    background:#ffffff;
-
-}
-
-
-
-.about .container{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    align-items:center;
-
-    gap:70px;
-
-}
-
-
-
-
-/* Linkerkant tekst */
-
-
-.about-left{
-
-    animation:fadeLeft .8s ease;
-
-}
-
-
-
-.about-left p{
-
-    font-size:18px;
-
-    line-height:1.9;
-
-    color:#555;
-
-    margin-bottom:25px;
-
-}
-
-
-
-
-/* Rechterkant foto */
-
-
-.about-right{
-
-    position:relative;
-
-}
-
-
-
-.about-right img{
-
-    width:100%;
-
-    height:500px;
-
-    object-fit:cover;
-
-    border-radius:25px;
-
-    box-shadow:
-
-    0 30px 60px rgba(0,0,0,.20);
-
-    transition:.4s;
-
-}
-
-
-
-.about-right img:hover{
-
-    transform:translateY(-10px);
-
-}
-
-
-
-/* gouden rand achter foto */
-
-
-.about-right::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:100%;
-
-    height:100%;
-
-    border:3px solid #D4AF37;
-
-    border-radius:25px;
-
-    top:20px;
-
-    right:-20px;
-
-    z-index:-1;
-
-}
-
 
 
 
 /* =======================================================
-   ANIMATIES
+   HERO PAGINA
 ======================================================= */
 
 
-@keyframes fadeLeft{
+.hero{
 
+    height:100vh;
 
-    from{
-
-        opacity:0;
-
-        transform:translateX(-50px);
-
-    }
-
-
-    to{
-
-        opacity:1;
-
-        transform:translateX(0);
-
-    }
-
-
-}
-
-
-
-
-@keyframes fadeRight{
-
-
-    from{
-
-        opacity:0;
-
-        transform:translateX(50px);
-
-    }
-
-
-    to{
-
-        opacity:1;
-
-        transform:translateX(0);
-
-    }
-
-
-}
-/* =======================================================
-   MENU SECTIE
-======================================================= */
-
-
-.menu{
-
-    background:#FAF5EB;
-
-}
-
-
-
-
-.menu-intro{
-
-    max-width:750px;
-
-    margin:0 auto 60px;
-
-    text-align:center;
-
-    color:#666;
-
-    font-size:18px;
-
-    line-height:1.8;
-
-}
-
-
-
-
-/* ===============================
-   CATEGORIE
-================================ */
-
-
-.menu-categorie{
-
-    margin-bottom:80px;
-
-}
-
-
-
-.menu-categorie h2{
-
-    font-family:"Cinzel",serif;
-
-    font-size:38px;
-
-    color:#7A1E1E;
-
-    text-align:left;
-
-    margin-bottom:35px;
-
-    padding-left:20px;
-
-    border-left:6px solid #D4AF37;
-
-}
-
-
-
-
-/* ===============================
-   GERECHT KAART
-================================ */
-
-
-.menu-card{
-
-
-    background:white;
-
-    border-radius:20px;
-
-    padding:35px;
-
-    margin-bottom:30px;
-
-    box-shadow:
-
-    0 15px 35px rgba(0,0,0,.08);
-
-    transition:.35s;
-
-    position:relative;
-
-    overflow:hidden;
-
-}
-
-
-
-
-/* gouden hoek */
-
-
-.menu-card::before{
-
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-
-    left:0;
-
-    width:100%;
-
-    height:5px;
-
-    background:#D4AF37;
-
-
-}
-
-
-
-.menu-card:hover{
-
-
-    transform:translateY(-8px);
-
-    box-shadow:
-
-    0 25px 50px rgba(0,0,0,.15);
-
-
-}
-
-
-
-
-/* Naam gerecht */
-
-
-.menu-card h3{
-
-
-    font-family:"Cinzel",serif;
-
-    color:#7A1E1E;
-
-    font-size:30px;
-
-    margin-bottom:20px;
-
-
-}
-
-
-
-
-/* Beschrijving */
-
-.menu-description{
-
-
-    color:#777;
-
-    font-size:16px;
-
-    margin-bottom:25px;
-
-    line-height:1.7;
-
-
-}
-
-
-
-
-/* ===============================
-   VARIANTEN
-================================ */
-
-
-.variant{
-
+    min-height:700px;
 
     display:flex;
 
-    justify-content:space-between;
-
     align-items:center;
-
-    padding:15px 0;
-
-    border-bottom:
-
-    1px dashed rgba(0,0,0,.15);
-
-
-}
-
-
-
-.variant:last-child{
-
-
-    border-bottom:none;
-
-
-}
-
-
-
-
-.variant span:first-child{
-
-
-    font-size:17px;
-
-    color:#444;
-
-
-}
-
-
-
-
-
-/* Prijs */
-
-
-.menu-price{
-
-
-    color:#B78D17;
-
-    font-size:21px;
-
-    font-weight:600;
-
-
-}
-
-
-
-
-
-/* ===============================
-   MENU ANIMATIE
-================================ */
-
-
-.menu-card{
-
-
-    animation:menuAppear .6s ease forwards;
-
-
-}
-
-
-
-@keyframes menuAppear{
-
-
-    from{
-
-
-        opacity:0;
-
-        transform:translateY(30px);
-
-
-    }
-
-
-    to{
-
-
-        opacity:1;
-
-        transform:translateY(0);
-
-
-    }
-
-
-}
-/* =======================================================
-   WAAROM KIEZEN VOOR ONS
-======================================================= */
-
-
-.why{
-
-    background:#15120F;
-
-    color:white;
-
-}
-
-
-
-.why h2{
-
-    color:#D4AF37;
-
-}
-
-
-
-
-
-.cards{
-
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:35px;
-
-    margin-top:60px;
-
-}
-
-
-
-
-.card{
-
-    background:
-
-    rgba(255,255,255,.08);
-
-    backdrop-filter:blur(10px);
-
-    border:1px solid rgba(212,175,55,.3);
-
-    padding:40px 30px;
-
-    border-radius:20px;
-
-    text-align:center;
-
-    transition:.35s;
-
-}
-
-
-
-
-.card:hover{
-
-
-    transform:translateY(-10px);
-
-    background:
-
-    rgba(212,175,55,.12);
-
-
-}
-
-
-
-
-.card h3{
-
-    color:#D4AF37;
-
-    font-family:"Cinzel",serif;
-
-    font-size:24px;
-
-    margin-bottom:20px;
-
-}
-
-
-
-
-.card p{
-
-    color:#eee;
-
-    line-height:1.8;
-
-}
-
-
-
-
-
-
-/* =======================================================
-   OPENINGSTIJDEN
-======================================================= */
-
-
-.opening{
-
-    background:#FAF5EB;
-
-}
-
-
-
-
-.opening-box{
-
-
-    max-width:700px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:0;
-
-    background:white;
-
-    border-radius:20px;
-
-    overflow:hidden;
-
-    box-shadow:
-
-    0 20px 40px rgba(0,0,0,.1);
-
-
-}
-
-
-
-
-.opening-box div{
-
-
-    padding:20px;
-
-    font-size:18px;
-
-    border-bottom:1px solid #eee;
-
-
-}
-
-
-
-.opening-box div:nth-child(odd){
-
-
-    font-weight:600;
-
-    color:#7A1E1E;
-
-
-}
-
-
-
-.opening-box div:nth-child(even){
-
-
-    text-align:right;
-
-    color:#555;
-
-
-}
-
-
-
-
-
-
-/* =======================================================
-   CONTACT
-======================================================= */
-
-
-.contact{
-
-
-    background:#7A1E1E;
-
-    color:white;
-
-
-}
-
-
-
-.contact h2{
-
-
-    color:#D4AF37;
-
-
-}
-
-
-
-
-.contact-grid{
-
-
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:40px;
-
-    margin-top:50px;
-
-
-}
-
-
-
-
-.contact-grid div{
-
-
-    background:
-
-    rgba(255,255,255,.08);
-
-    padding:40px;
-
-    border-radius:20px;
-
-    text-align:center;
-
-    border:
-
-    1px solid rgba(212,175,55,.3);
-
-
-}
-
-
-
-
-.contact-grid h3{
-
-
-    color:#D4AF37;
-
-    font-family:"Cinzel",serif;
-
-    font-size:25px;
-
-    margin-bottom:15px;
-
-
-}
-
-
-
-.contact-grid p{
-
-
-    color:white;
-
-    font-size:20px;
-
-
-}
-
-
-
-
-
-
-/* =======================================================
-   FOOTER
-======================================================= */
-
-
-footer{
-
-
-    background:#0E0B09;
-
-    color:white;
-
-    text-align:center;
-
-    padding:50px 20px;
-
-
-}
-
-
-
-footer h2{
-
-
-    font-family:"Cinzel",serif;
-
-    color:#D4AF37;
-
-    letter-spacing:3px;
-
-    margin-bottom:15px;
-
-
-}
-
-
-
-footer p{
-
-
-    color:#ccc;
-
-    margin-top:10px;
-
-
-}
-/* =======================================================
-   RESPONSIVE DESIGN
-======================================================= */
-
-
-/* Tablets */
-
-@media(max-width:1000px){
-
-
-
-    .overlay h1{
-
-        font-size:65px;
-
-    }
-
-
-
-    .about .container{
-
-        grid-template-columns:1fr;
-
-        gap:50px;
-
-    }
-
-
-
-    .about-right img{
-
-        height:450px;
-
-    }
-
-
-
-
-    .cards{
-
-        grid-template-columns:1fr;
-
-    }
-
-
-
-    .contact-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-
-
-}
-
-
-
-
-
-
-/* Mobiele telefoons */
-
-
-@media(max-width:768px){
-
-
-
-    section{
-
-        padding:80px 5%;
-
-    }
-
-
-
-
-    /* NAVIGATIE */
-
-
-    nav{
-
-        padding:20px 5%;
-
-    }
-
-
-
-    .logo{
-
-        font-size:24px;
-
-        letter-spacing:2px;
-
-    }
-
-
-
-    nav ul{
-
-        gap:15px;
-
-    }
-
-
-
-    nav ul li a{
-
-        font-size:14px;
-
-    }
-
-
-
-
-
-    /* HERO */
-
-
-    .hero{
-
-        height:100vh;
-
-    }
-
-
-
-    .overlay h3{
-
-        font-size:14px;
-
-        letter-spacing:4px;
-
-    }
-
-
-
-
-    .overlay h1{
-
-
-        font-size:42px;
-
-    }
-
-
-
-
-    .overlay p{
-
-
-        font-size:17px;
-
-    }
-
-
-
-
-    .button{
-
-        padding:15px 35px;
-
-        font-size:16px;
-
-    }
-
-
-
-
-
-    /* TITELS */
-
-
-    section h2{
-
-
-        font-size:34px;
-
-
-    }
-
-
-
-
-
-
-    /* OVER ONS */
-
-
-    .about-right img{
-
-
-        height:350px;
-
-
-    }
-
-
-
-
-
-
-    /* MENU */
-
-
-    .menu-categorie h2{
-
-
-        font-size:30px;
-
-
-    }
-
-
-
-
-    .menu-card{
-
-
-        padding:25px;
-
-    }
-
-
-
-
-    .menu-card h3{
-
-
-        font-size:24px;
-
-
-    }
-
-
-
-
-
-    .variant span:first-child{
-
-
-        font-size:15px;
-
-
-    }
-
-
-
-    .menu-price{
-
-
-        font-size:18px;
-
-
-    }
-
-
-
-
-
-    /* OPENINGSTIJDEN */
-
-
-    .opening-box{
-
-
-        grid-template-columns:1fr;
-
-
-    }
-
-
-
-    .opening-box div:nth-child(even){
-
-
-        text-align:left;
-
-
-    }
-
-
-
-
-    footer h2{
-
-
-        font-size:28px;
-
-
-    }
-
-
-}
-/* =======================================================
-   EXTRA LUXE EFFECTEN
-======================================================= */
-
-
-/* Smooth selectie */
-
-::selection{
-
-    background:#D4AF37;
-
-    color:white;
-
-}
-
-
-
-
-
-/* Scroll animatie basis */
-
-
-.fade-in{
-
-    opacity:0;
-
-    transform:translateY(40px);
-
-    transition:all .8s ease;
-
-}
-
-
-
-.fade-in.show{
-
-    opacity:1;
-
-    transform:translateY(0);
-
-}
-
-
-
-
-
-/* Gouden decoratie */
-
-
-.gold-text{
-
-    color:#D4AF37;
-
-}
-
-
-
-
-
-/* Luxe lijn onder titels */
-
-
-.section-title{
-
-    position:relative;
-
-    display:inline-block;
-
-}
-
-
-
-.section-title::after{
-
-
-    content:"";
-
-    position:absolute;
-
-    left:50%;
-
-    bottom:-15px;
-
-    transform:translateX(-50%);
-
-    width:80px;
-
-    height:3px;
-
-    background:#D4AF37;
-
-
-}
-
-
-
-
-
-/* Foto hover effect */
-
-
-img{
-
-    transition:.4s ease;
-
-}
-
-
-
-img:hover{
-
-
-    filter:
-
-    brightness(1.05);
-
-
-}
-
-
-
-
-
-/* Algemene hover kaart */
-
-
-.card,
-
-.menu-card,
-
-.contact-grid div{
-
-
-    cursor:pointer;
-
-
-}
-
-
-
-
-
-/* Gouden knop glow */
-
-
-.button:hover{
-
-
-    box-shadow:
-
-    0 0 25px rgba(212,175,55,.7);
-
-
-}
-
-
-
-
-
-
-/* Kleine sierlijke achtergrond */
-
-
-.menu::before{
-
-
-    content:"";
-
-    position:absolute;
-
-    width:250px;
-
-    height:250px;
-
-    background:
-
-    radial-gradient(
-
-        circle,
-
-        rgba(212,175,55,.15),
-
-        transparent
-
-    );
-
-
-    top:50px;
-
-    left:-100px;
-
-
-}
-
-
-
-
-/* Footer gouden lijn */
-
-
-footer::before{
-
-
-    content:"";
-
-    display:block;
-
-    width:120px;
-
-    height:3px;
-
-    background:#D4AF37;
-
-    margin:0 auto 30px;
-
-
-}
-// ==========================================
-// PIE-NONG-THAI
-// MENU UIT SUPABASE LADEN
-// ==========================================
-
-
-const supabaseUrl = "https://ccmhegxkxyqemqbnqvro.supabase.co";
-
-const supabaseKey = "sb_publishable_cGdgaq80rMC3tuARMGgNDA_gzgPTmtT";
-
-
-const client = supabase.createClient(
-    supabaseUrl,
-    supabaseKey
-);
-
-
-
-
-// ==========================================
-// MENU LADEN
-// ==========================================
-
-
-async function laadMenu(){
-
-
-    const menu = document.getElementById("prijzen");
-
-
-    if(!menu){
-
-        return;
-
-    }
-
-
-
-    const {data, error} = await client
-
-        .from("Prijzen")
-
-        .select("*")
-
-        .order("id");
-
-
-
-
-
-    if(error){
-
-
-        console.log(error);
-
-
-        menu.innerHTML =
-
-        "<p>Menu kon niet geladen worden.</p>";
-
-
-        return;
-
-
-    }
-
-
-
-
-
-    let categorieen = {};
-
-
-
-
-
-    // Groeperen op categorie
-
-    data.forEach(gerecht => {
-
-
-
-        if(!categorieen[gerecht.categorie]){
-
-
-            categorieen[gerecht.categorie] = [];
-
-
-        }
-
-
-
-        categorieen[gerecht.categorie].push(gerecht);
-
-
-
-    });
-
-
-
-
-
-    let html = "";
-
-
-
-
-
-    Object.keys(categorieen).forEach(categorie => {
-
-
-
-        html += `
-
-        <div class="menu-categorie">
-
-
-            <h2>
-
-                ${categorie}
-
-            </h2>
-
-
-        `;
-
-
-
-
-
-
-        let gerechten = {};
-
-
-
-
-
-        // Groeperen op gerechtnaam
-
-
-        categorieen[categorie].forEach(item => {
-
-
-
-            if(!gerechten[item.naam]){
-
-
-                gerechten[item.naam] = [];
-
-
-            }
-
-
-
-            gerechten[item.naam].push(item);
-
-
-
-        });
-
-
-
-
-
-
-        Object.keys(gerechten).forEach(naam => {
-
-
-
-            let eerste = gerechten[naam][0];
-
-
-
-            html += `
-
-
-            <div class="menu-card">
-
-
-
-                <h3>
-
-                    ${naam}
-
-                </h3>
-
-
-
-
-            `;
-
-
-
-
-            if(eerste.beschrijving){
-
-
-
-                html += `
-
-
-                <p class="menu-description">
-
-                    ${eerste.beschrijving}
-
-                </p>
-
-
-                `;
-
-
-            }
-
-
-
-
-
-
-            gerechten[naam].forEach(variant => {
-
-
-
-                html += `
-
-
-                <div class="variant">
-
-
-                    <span>
-
-                        ${variant.variant}
-
-                    </span>
-
-
-
-                    <span class="menu-price">
-
-
-                        € ${Number(variant.prijs)
-
-                        .toFixed(2)
-
-                        .replace(".", ",")}
-
-
-
-                    </span>
-
-
-
-                </div>
-
-
-                `;
-
-
-
-            });
-
-
-
-
-
-            html += `
-
-            </div>
-
-            `;
-
-
-
-        });
-
-
-
-
-
-        html += `
-
-        </div>
-
-        `;
-
-
-
-    });
-
-
-
-
-
-
-    menu.innerHTML = html;
-
-
-
-}
-
-
-
-
-
-// starten
-
-laadMenu();
-               /* =======================================================
-   ACTIE KNOPPEN
-======================================================= */
-
-
-.actions{
-
-    background:white;
-
-    text-align:center;
-
-}
-
-
-
-.action-buttons{
-
-    display:flex;
 
     justify-content:center;
 
-    gap:25px;
+    text-align:center;
 
-    flex-wrap:wrap;
+    background-size:cover;
+
+    background-position:center;
+
+    position:relative;
 
 }
 
 
 
-.action-button{
-
-    padding:18px 35px;
-
-    background:#7A1E1E;
+.overlay{
 
     color:white;
 
-    text-decoration:none;
+    max-width:850px;
+
+    padding:20px;
+
+}
+
+
+
+.overlay h3{
+
+    font-size:25px;
+
+    color:#D4AF37;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.overlay h1{
+
+    font-size:75px;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.overlay h1 span{
+
+    color:#D4AF37;
+
+}
+
+
+
+.overlay p{
+
+    font-size:20px;
+
+    line-height:1.8;
+
+    margin-bottom:40px;
+
+}
+
+
+
+
+
+.button{
+
+    display:inline-block;
+
+    background:#D4AF37;
+
+    color:white;
+
+    padding:16px 40px;
 
     border-radius:50px;
+
+    text-decoration:none;
 
     font-weight:600;
 
@@ -2078,89 +264,10 @@ laadMenu();
 
 
 
-.action-button:hover{
+.button:hover{
 
-    background:#D4AF37;
+    background:#7A1E1E;
 
     transform:translateY(-5px);
-
-}
-
-
-
-.whatsapp{
-
-    background:#1f9d55;
-
-}
-
-
-
-
-
-/* =======================================================
-   REVIEWS
-======================================================= */
-
-
-.reviews{
-
-    background:#FAF5EB;
-
-}
-
-
-
-.review-cards{
-
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:30px;
-
-}
-
-
-
-.review-card{
-
-    background:white;
-
-    padding:35px;
-
-    border-radius:20px;
-
-    text-align:center;
-
-    box-shadow:0 15px 35px rgba(0,0,0,.1);
-
-}
-
-
-
-.review-card p{
-
-    margin-top:20px;
-
-    color:#555;
-
-    line-height:1.7;
-
-}
-
-
-
-
-
-@media(max-width:768px){
-
-
-    .review-cards{
-
-        grid-template-columns:1fr;
-
-    }
-
 
 }
