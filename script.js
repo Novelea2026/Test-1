@@ -763,6 +763,12 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 
+    const bestellen =
+    document.getElementById("checkoutButton");
+
+
+
+
 
     if(knop){
 
@@ -771,6 +777,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
     }
+
 
 
 
@@ -785,15 +792,16 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 
+
+
+    if(bestellen){
+
+
+        bestellen.onclick = plaatsBestelling;
+
+
+    }
+
+
+
 });
-
-
-
-
-
-
-
-
-// START
-
-laadMenu();
