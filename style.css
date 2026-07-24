@@ -1,118 +1,211 @@
 /* =======================================================
-   PIE-NONG-THAI WEBSITE STYLE
+   PIE-NONG-THAI STYLE.CSS
 ======================================================= */
+
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
 
+
+
 *{
+
     margin:0;
+
     padding:0;
+
     box-sizing:border-box;
+
 }
+
+
 
 html{
+
     scroll-behavior:smooth;
+
 }
 
+
+
 body{
+
     font-family:"Poppins",sans-serif;
+
     color:#333;
+
     background:#FAF5EB;
+
 }
+
+
 
 h1,
 h2,
 h3{
+
     font-family:"Cinzel",serif;
+
 }
 
+
+
 .container{
+
     width:90%;
+
     max-width:1200px;
+
     margin:auto;
+
 }
+
+
+
+
 
 /* =======================================================
    NAVIGATIE
 ======================================================= */
 
+
 header{
+
     position:absolute;
+
     top:0;
+
     left:0;
+
     width:100%;
+
     z-index:1000;
+
 }
+
+
 
 nav{
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
+
     padding:25px 5%;
+
 }
+
+
 
 .logo{
+
     font-family:"Cinzel",serif;
+
     font-size:30px;
+
     font-weight:700;
+
     color:#D4AF37;
+
     white-space:nowrap;
+
 }
+
+
 
 nav ul{
+
     display:flex;
+
     list-style:none;
+
     gap:25px;
-    align-items:center;
+
 }
+
+
 
 nav ul li a{
-    color:#ffffff;
+
+    color:white;
+
     text-decoration:none;
-    font-size:16px;
+
     font-weight:500;
+
     transition:.3s;
+
 }
+
+
 
 nav ul li a:hover{
+
     color:#D4AF37;
+
 }
 
+
+
+
+
 /* =======================================================
-   HERO PAGINA
+   HERO
 ======================================================= */
 
+
 .hero{
+
     height:100vh;
+
     min-height:700px;
 
     display:flex;
+
     justify-content:center;
+
     align-items:center;
 
     text-align:center;
 
     background-size:cover;
+
     background-position:center;
 
     position:relative;
+
 }
 
-/* Donkere laag over de foto voor betere leesbaarheid */
+
 
 .hero::before{
+
     content:"";
+
     position:absolute;
+
     inset:0;
+
     background:rgba(0,0,0,.45);
+
 }
 
+
+
 .overlay{
+
     position:relative;
+
     z-index:2;
+
     max-width:850px;
+
     padding:20px;
+
 }
+
+
 
 .overlay h3{
 
@@ -120,27 +213,27 @@ nav ul li a:hover{
 
     color:#D4AF37;
 
-    letter-spacing:2px;
-
     margin-bottom:20px;
 
-    text-shadow:
-    0 2px 10px rgba(0,0,0,.8);
+    text-shadow:0 2px 10px rgba(0,0,0,.8);
 
 }
+
+
 
 .overlay h1{
 
-    font-size:78px;
+    font-size:75px;
 
-    color:#ffffff;
+    color:white;
 
     margin-bottom:25px;
 
-    text-shadow:
-    0 6px 25px rgba(0,0,0,.9);
+    text-shadow:0 5px 25px rgba(0,0,0,.9);
 
 }
+
+
 
 .overlay h1 span{
 
@@ -148,9 +241,11 @@ nav ul li a:hover{
 
 }
 
+
+
 .overlay p{
 
-    color:#ffffff;
+    color:white;
 
     font-size:20px;
 
@@ -158,10 +253,11 @@ nav ul li a:hover{
 
     margin-bottom:40px;
 
-    text-shadow:
-    0 2px 10px rgba(0,0,0,.9);
+    text-shadow:0 2px 10px rgba(0,0,0,.8);
 
 }
+
+
 
 .button{
 
@@ -181,10 +277,9 @@ nav ul li a:hover{
 
     transition:.3s;
 
-    box-shadow:
-    0 10px 25px rgba(0,0,0,.25);
-
 }
+
+
 
 .button:hover{
 
@@ -197,13 +292,16 @@ nav ul li a:hover{
    OVER ONS
 ======================================================= */
 
+
 .about{
 
     padding:110px 0;
 
-    background:#ffffff;
+    background:white;
 
 }
+
+
 
 .about .container{
 
@@ -217,6 +315,8 @@ nav ul li a:hover{
 
 }
 
+
+
 .about-left h2{
 
     font-size:46px;
@@ -224,6 +324,8 @@ nav ul li a:hover{
     color:#7A1E1E;
 
 }
+
+
 
 .gold-line{
 
@@ -239,29 +341,39 @@ nav ul li a:hover{
 
 }
 
+
+
 .about-left p{
+
+    color:#555;
 
     font-size:17px;
 
-    line-height:1.9;
-
-    color:#555;
+    line-height:1.8;
 
     margin-bottom:20px;
 
 }
 
+
+
 .about-right img{
 
     width:100%;
 
-    border-radius:25px;
+    height:450px;
 
     object-fit:cover;
 
-    box-shadow:0 20px 50px rgba(0,0,0,.20);
+    border-radius:25px;
+
+    box-shadow:
+
+    0 20px 50px rgba(0,0,0,.2);
 
 }
+
+
 
 
 
@@ -271,6 +383,7 @@ nav ul li a:hover{
    MENU
 ======================================================= */
 
+
 .menu{
 
     padding:110px 0;
@@ -279,15 +392,19 @@ nav ul li a:hover{
 
 }
 
+
+
 .menu h2{
 
     text-align:center;
 
-    color:#7A1E1E;
-
     font-size:46px;
 
+    color:#7A1E1E;
+
 }
+
+
 
 .menu .gold-line{
 
@@ -295,19 +412,23 @@ nav ul li a:hover{
 
 }
 
+
+
 .menu-intro{
 
     text-align:center;
-
-    color:#666;
 
     max-width:700px;
 
     margin:0 auto 60px;
 
+    color:#666;
+
     line-height:1.8;
 
 }
+
+
 
 #prijzen{
 
@@ -323,9 +444,12 @@ nav ul li a:hover{
 
 
 
+
+
 /* =======================================================
-   CATEGORIE
+   MENU CATEGORIE
 ======================================================= */
+
 
 .menu-categorie{
 
@@ -335,17 +459,21 @@ nav ul li a:hover{
 
     border-radius:25px;
 
-    box-shadow:0 15px 40px rgba(0,0,0,.08);
+    box-shadow:
+
+    0 15px 40px rgba(0,0,0,.08);
 
 }
+
+
 
 .menu-categorie h2{
 
     text-align:left;
 
-    color:#7A1E1E;
-
     font-size:34px;
+
+    color:#7A1E1E;
 
     border-bottom:3px solid #D4AF37;
 
@@ -359,17 +487,22 @@ nav ul li a:hover{
 
 
 
+
+
 /* =======================================================
    GERECHTEN
 ======================================================= */
 
+
 .menu-card{
 
-    padding:22px 0;
+    padding:25px 0;
 
-    border-bottom:1px solid #ececec;
+    border-bottom:1px solid #eee;
 
 }
+
+
 
 .menu-card:last-child{
 
@@ -377,15 +510,19 @@ nav ul li a:hover{
 
 }
 
+
+
 .menu-card h3{
 
     color:#333;
 
-    font-size:26px;
+    font-size:25px;
 
-    margin-bottom:8px;
+    margin-bottom:10px;
 
 }
+
+
 
 .menu-description{
 
@@ -393,11 +530,13 @@ nav ul li a:hover{
 
     font-size:15px;
 
-    margin-bottom:18px;
+    margin-bottom:15px;
 
-    line-height:1.6;
+    line-height:1.7;
 
 }
+
+
 
 
 
@@ -406,6 +545,7 @@ nav ul li a:hover{
 /* =======================================================
    VARIANTEN
 ======================================================= */
+
 
 .variant{
 
@@ -417,15 +557,17 @@ nav ul li a:hover{
 
     padding:12px 0;
 
-    font-size:16px;
-
 }
+
+
 
 .variant span:first-child{
 
     color:#444;
 
 }
+
+
 
 .menu-price{
 
@@ -441,9 +583,51 @@ nav ul li a:hover{
 
 
 
+
+/* =======================================================
+   BESTEL KNOPPEN BIJ GERECHTEN
+======================================================= */
+
+
+.add-cart{
+
+    margin-top:15px;
+
+    background:#7A1E1E;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 25px;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+
+
+.add-cart:hover{
+
+    background:#D4AF37;
+
+}
+
+
+
+
+
+
 /* =======================================================
    LOADING
 ======================================================= */
+
 
 .loading{
 
@@ -457,18 +641,21 @@ nav ul li a:hover{
 
 }
 /* =======================================================
-   WAAROM ONS
+   WAAROM PIE-NONG-THAI
 ======================================================= */
+
 
 .why{
 
     padding:110px 0;
 
-    background:#ffffff;
+    background:white;
 
     text-align:center;
 
 }
+
+
 
 .why h2{
 
@@ -478,11 +665,15 @@ nav ul li a:hover{
 
 }
 
+
+
 .why .gold-line{
 
     margin:20px auto 45px;
 
 }
+
+
 
 .cards{
 
@@ -494,27 +685,23 @@ nav ul li a:hover{
 
 }
 
+
+
 .card{
 
     background:#FAF5EB;
 
-    border-radius:25px;
-
     padding:35px;
 
-    transition:.3s;
+    border-radius:25px;
 
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    box-shadow:
 
-}
-
-.card:hover{
-
-    transform:translateY(-8px);
-
-    box-shadow:0 20px 45px rgba(0,0,0,.15);
+    0 10px 30px rgba(0,0,0,.08);
 
 }
+
+
 
 .card h3{
 
@@ -522,9 +709,9 @@ nav ul li a:hover{
 
     margin-bottom:15px;
 
-    font-size:24px;
-
 }
+
+
 
 .card p{
 
@@ -536,9 +723,14 @@ nav ul li a:hover{
 
 
 
+
+
+
+
 /* =======================================================
    OPENINGSTIJDEN
 ======================================================= */
+
 
 .opening{
 
@@ -546,11 +738,13 @@ nav ul li a:hover{
 
     color:white;
 
-    text-align:center;
-
     padding:110px 0;
 
+    text-align:center;
+
 }
+
+
 
 .opening h2{
 
@@ -560,23 +754,21 @@ nav ul li a:hover{
 
 }
 
+
+
 .opening .gold-line{
 
     margin:20px auto 40px;
 
 }
 
+
+
 .opening-box{
 
     max-width:550px;
 
     margin:auto;
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:18px;
 
     background:white;
 
@@ -586,13 +778,23 @@ nav ul li a:hover{
 
     border-radius:20px;
 
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+
 }
+
+
+
 
 
 
 /* =======================================================
    CONTACT
 ======================================================= */
+
 
 .contact{
 
@@ -604,6 +806,8 @@ nav ul li a:hover{
 
 }
 
+
+
 .contact h2{
 
     color:#7A1E1E;
@@ -612,11 +816,7 @@ nav ul li a:hover{
 
 }
 
-.contact .gold-line{
 
-    margin:20px auto 40px;
-
-}
 
 .contact-grid{
 
@@ -624,11 +824,13 @@ nav ul li a:hover{
 
     justify-content:center;
 
-    gap:90px;
+    gap:80px;
 
     flex-wrap:wrap;
 
 }
+
+
 
 .contact-grid h3{
 
@@ -637,6 +839,8 @@ nav ul li a:hover{
     margin-bottom:10px;
 
 }
+
+
 
 .contact-grid p{
 
@@ -648,19 +852,26 @@ nav ul li a:hover{
 
 
 
+
+
+
+
 /* =======================================================
-   ACTIEKNOPPEN
+   ACTIE KNOPPEN
 ======================================================= */
+
 
 .actions{
 
     padding:90px 0;
 
-    background:#ffffff;
+    background:white;
 
     text-align:center;
 
 }
+
+
 
 .actions h2{
 
@@ -669,6 +880,8 @@ nav ul li a:hover{
     font-size:40px;
 
 }
+
+
 
 .action-buttons{
 
@@ -684,6 +897,8 @@ nav ul li a:hover{
 
 }
 
+
+
 .action-button{
 
     background:#7A1E1E;
@@ -696,19 +911,19 @@ nav ul li a:hover{
 
     border-radius:50px;
 
-    transition:.3s;
-
     font-weight:600;
 
 }
+
+
 
 .action-button:hover{
 
     background:#D4AF37;
 
-    transform:translateY(-5px);
-
 }
+
+
 
 .whatsapp{
 
@@ -718,9 +933,14 @@ nav ul li a:hover{
 
 
 
+
+
+
+
 /* =======================================================
    REVIEWS
 ======================================================= */
+
 
 .reviews{
 
@@ -732,6 +952,8 @@ nav ul li a:hover{
 
 }
 
+
+
 .reviews h2{
 
     color:#7A1E1E;
@@ -740,11 +962,7 @@ nav ul li a:hover{
 
 }
 
-.reviews .gold-line{
 
-    margin:20px auto 45px;
-
-}
 
 .review-cards{
 
@@ -756,6 +974,8 @@ nav ul li a:hover{
 
 }
 
+
+
 .review-card{
 
     background:white;
@@ -764,25 +984,34 @@ nav ul li a:hover{
 
     border-radius:25px;
 
-    box-shadow:0 15px 40px rgba(0,0,0,.08);
+    box-shadow:
+
+    0 15px 40px rgba(0,0,0,.08);
 
 }
 
-.review-card p{
 
-    margin-top:20px;
+
+.review-card p{
 
     color:#666;
 
     line-height:1.8;
 
+    margin-top:20px;
+
 }
+
+
+
+
 
 
 
 /* =======================================================
    FOOTER
 ======================================================= */
+
 
 footer{
 
@@ -796,15 +1025,15 @@ footer{
 
 }
 
+
+
 footer h2{
 
     color:#D4AF37;
 
-    font-size:34px;
-
-    margin-bottom:15px;
-
 }
+
+
 
 footer p{
 
@@ -816,11 +1045,125 @@ footer p{
 
 
 
+
+
+
+
+/* =======================================================
+   WINKELMANDJE
+======================================================= */
+
+
+#winkelwagen{
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    z-index:9999;
+
+}
+
+
+
+#cartButton{
+
+    width:70px;
+
+    height:70px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#7A1E1E;
+
+    color:white;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+    box-shadow:
+
+    0 15px 35px rgba(0,0,0,.25);
+
+}
+
+
+
+#cartCount{
+
+    position:absolute;
+
+    top:-8px;
+
+    right:-8px;
+
+    background:#D4AF37;
+
+    color:white;
+
+    width:28px;
+
+    height:28px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+}
+
+
+
+
+
+
+
 /* =======================================================
    MOBIEL
 ======================================================= */
 
+
 @media(max-width:900px){
+
+
+    nav{
+
+        padding:20px;
+
+    }
+
+
+    nav ul{
+
+        gap:15px;
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+    }
+
+
+
+    .overlay h1{
+
+        font-size:50px;
+
+    }
+
+
 
     .about .container{
 
@@ -828,11 +1171,15 @@ footer p{
 
     }
 
+
+
     .cards{
 
         grid-template-columns:1fr;
 
     }
+
+
 
     .review-cards{
 
@@ -840,53 +1187,46 @@ footer p{
 
     }
 
-    .contact-grid{
 
-        flex-direction:column;
-
-        gap:35px;
-
-    }
-
-    .overlay h1{
-
-        font-size:52px;
-
-    }
 
 }
 
-@media(max-width:650px){
+
+
+@media(max-width:600px){
+
 
     nav{
 
         flex-direction:column;
 
-        gap:15px;
+    }
+
+
+
+    .logo{
+
+        font-size:24px;
 
     }
 
-    nav ul{
 
-        justify-content:center;
-
-        flex-wrap:wrap;
-
-        gap:15px;
-
-    }
 
     .overlay h1{
 
-        font-size:40px;
+        font-size:38px;
 
     }
+
+
 
     .overlay p{
 
-        font-size:17px;
+        font-size:16px;
 
     }
+
+
 
     .opening-box{
 
@@ -894,10 +1234,14 @@ footer p{
 
     }
 
-    .menu-categorie{
 
-        padding:25px;
+
+    .variant{
+
+        font-size:14px;
 
     }
+
+
 
 }
