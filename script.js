@@ -10,6 +10,50 @@ const client = supabase.createClient(
 
 
 
+// ===============================
+// WINKELMAND
+// ===============================
+
+
+let winkelwagen = [];
+
+
+
+
+function updateCart(){
+
+    const teller = document.getElementById("cartCount");
+
+    if(teller){
+
+        teller.innerHTML = winkelwagen.length;
+
+    }
+
+}
+
+
+
+
+
+function voegToeAanWinkelwagen(gerecht){
+
+
+    winkelwagen.push(gerecht);
+
+
+    updateCart();
+
+
+    alert(
+        gerecht.naam + " toegevoegd aan winkelwagen"
+    );
+
+
+}
+
+
+
 
 
 // ===============================
@@ -17,21 +61,19 @@ const client = supabase.createClient(
 // ===============================
 
 
-async function laadMenu() {
+async function laadMenu(){
 
 
     const menu = document.getElementById("prijzen");
 
 
-    if (!menu) {
+    if(!menu){
 
         return;
 
     }
 
 
-
-    // Loading
 
     menu.innerHTML = `
 
@@ -46,59 +88,24 @@ async function laadMenu() {
 
 
 
-
     const { data, error } = await client
 
-        .from("Prijzen")
+    .from("Prijzen")
 
-        .select("*")
+    .select("*")
 
-        .order("id", { ascending: true });
-
-
+    .order("id", {ascending:true});
 
 
 
-    if (error) {
 
+
+    if(error){
 
         console.log(error);
 
-
-        menu.innerHTML = `
-
-        <p>
-
-            Het menu kon niet geladen worden.
-
-            Probeer later opnieuw.
-
-        </p>
-
-        `;
-
-
-        return;
-
-    }
-
-
-
-
-
-    if (!data || data.length === 0) {
-
-
-        menu.innerHTML = `
-
-        <p>
-
-            Er zijn momenteel geen gerechten beschikbaar.
-
-        </p>
-
-        `;
-
+        menu.innerHTML =
+        "Menu kan niet geladen worden.";
 
         return;
 
@@ -115,28 +122,23 @@ async function laadMenu() {
 
 
 
-    // Gerechten verdelen per categorie
-
     data.forEach(gerecht => {
 
 
 
-        const categorie = gerecht.categorie || "Menu";
+        const categorie =
+        gerecht.categorie || "Ongecategoriseerd";
 
 
 
-        if (!categorieen[categorie]) {
-
+        if(!categorieen[categorie]){
 
             categorieen[categorie] = [];
-
 
         }
 
 
-
         categorieen[categorie].push(gerecht);
-
 
 
     });
@@ -146,8 +148,8 @@ async function laadMenu() {
 
 
 
-
     let html = "";
+
 
 
 
@@ -162,14 +164,13 @@ async function laadMenu() {
         <div class="menu-categorie">
 
 
-            <h2>
+        <h2>
 
-                ${categorie}
+        ${categorie}
 
-            </h2>
+        </h2>
 
         `;
-
 
 
 
@@ -181,19 +182,15 @@ async function laadMenu() {
 
 
 
-
         categorieen[categorie].forEach(item => {
 
 
 
-            if (!gerechten[item.naam]) {
-
+            if(!gerechten[item.naam]){
 
                 gerechten[item.naam] = [];
 
-
             }
-
 
 
             gerechten[item.naam].push(item);
@@ -208,12 +205,11 @@ async function laadMenu() {
 
 
 
-
         Object.keys(gerechten).forEach(naam => {
 
 
 
-            const eerste = gerechten[naam][0];
+            const item = gerechten[naam][0];
 
 
 
@@ -223,11 +219,13 @@ async function laadMenu() {
             <div class="menu-card">
 
 
-                <h3>
+            <h3>
 
-                    ${naam}
+            ${naam}
 
-                </h3>
+            </h3>
+
+
 
 
 
@@ -238,36 +236,6 @@ async function laadMenu() {
 
 
 
-            // Beschrijving tonen
-
-            if (eerste.beschrijving) {
-
-
-
-                html += `
-
-
-                <p class="menu-description">
-
-                    ${eerste.beschrijving}
-
-                </p>
-
-
-                `;
-
-
-            }
-
-
-
-
-
-
-
-
-            // Varianten tonen
-
 
             gerechten[naam].forEach(variant => {
 
@@ -275,30 +243,25 @@ async function laadMenu() {
 
                 html += `
 
-
                 <div class="variant">
 
 
-                    <span>
+                <span>
 
-                        ${variant.variant}
+                ${variant.variant || ""}
 
-                    </span>
-
-
-
-                    <span class="menu-price">
-
-
-                        € ${Number(variant.prijs)
-
-                        .toFixed(2)
-
-                        .replace(".", ",")}
+                </span>
 
 
 
-                    </span>
+                <span class="menu-price">
+
+                € ${Number(variant.prijs)
+                .toFixed(2)
+                .replace(".",",")}
+
+                </span>
+
 
 
                 </div>
@@ -314,7 +277,22 @@ async function laadMenu() {
 
 
 
+
+
             html += `
+
+
+            <button
+
+            class="add-cart"
+
+            onclick='voegToeAanWinkelwagen(${JSON.stringify(item)})'>
+
+            🛒 Toevoegen
+
+
+            </button>
+
 
 
             </div>
@@ -330,19 +308,15 @@ async function laadMenu() {
 
 
 
-
         html += `
 
-
         </div>
-
 
         `;
 
 
 
     });
-
 
 
 
@@ -359,7 +333,5 @@ async function laadMenu() {
 
 
 
-
-// Start menu
 
 laadMenu();
