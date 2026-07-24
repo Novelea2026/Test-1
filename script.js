@@ -20,157 +20,12 @@ let winkelwagen = [];
 
 
 
+
 function updateCart(){
-function openCart(){
 
-    const popup = document.getElementById("cartPopup");
-
-    if(popup){
-
-        popup.style.display="flex";
-
-    }
-
-
-    toonWinkelwagen();
-
-}
-
-
-
-
-
-function closeCart(){
-
-    const popup = document.getElementById("cartPopup");
-
-    if(popup){
-
-        popup.style.display="none";
-
-    }
-
-}
-
-
-
-
-
-function toonWinkelwagen(){
-
-
-    const lijst =
-    document.getElementById("cartItems");
-
-
-    const totaal =
-    document.getElementById("cartTotal");
-
-
-
-    if(!lijst){
-
-        return;
-
-    }
-
-
-
-    if(winkelwagen.length === 0){
-
-        lijst.innerHTML =
-        "Uw winkelwagen is leeg.";
-
-        totaal.innerHTML="0.00";
-
-        return;
-
-    }
-
-
-
-    let html="";
-
-    let bedrag=0;
-
-
-
-    winkelwagen.forEach((item,index)=>{
-
-
-        bedrag += Number(item.prijs);
-
-
-
-        html += `
-
-
-        <div class="cart-item">
-
-
-            <span>
-
-            ${item.naam}
-
-            </span>
-
-
-
-            <span>
-
-            € ${Number(item.prijs)
-            .toFixed(2)
-            .replace(".",",")}
-
-            </span>
-
-
-
-            <button
-
-            class="remove-item"
-
-            onclick="verwijderItem(${index})">
-
-            X
-
-            </button>
-
-
-        </div>
-
-
-        `;
-
-
-    });
-
-
-
-    lijst.innerHTML=html;
-
-
-    totaal.innerHTML =
-    bedrag.toFixed(2).replace(".",",");
-
-
-}
-
-
-
-
-
-function verwijderItem(index){
-
-    winkelwagen.splice(index,1);
-
-    updateCart();
-
-    toonWinkelwagen();
-
-}
 
     const teller = document.getElementById("cartCount");
+
 
     if(teller){
 
@@ -178,7 +33,9 @@ function verwijderItem(index){
 
     }
 
+
 }
+
 
 
 
@@ -204,6 +61,207 @@ function voegToeAanWinkelwagen(gerecht){
 
 
 
+
+function openCart(){
+
+
+    const popup =
+    document.getElementById("cartPopup");
+
+
+    if(popup){
+
+        popup.style.display="flex";
+
+    }
+
+
+    toonWinkelwagen();
+
+
+}
+
+
+
+
+
+
+
+function closeCart(){
+
+
+    const popup =
+    document.getElementById("cartPopup");
+
+
+    if(popup){
+
+        popup.style.display="none";
+
+    }
+
+
+}
+
+
+
+
+
+
+
+function toonWinkelwagen(){
+
+
+    const lijst =
+    document.getElementById("cartItems");
+
+
+    const totaal =
+    document.getElementById("cartTotal");
+
+
+
+    if(!lijst){
+
+        return;
+
+    }
+
+
+
+
+
+    if(winkelwagen.length === 0){
+
+
+        lijst.innerHTML =
+        "Uw winkelwagen is leeg.";
+
+
+        totaal.innerHTML =
+        "0,00";
+
+
+        return;
+
+
+    }
+
+
+
+
+
+
+    let html = "";
+
+    let bedrag = 0;
+
+
+
+
+
+    winkelwagen.forEach((item,index)=>{
+
+
+        bedrag += Number(item.prijs);
+
+
+
+
+        html += `
+
+
+        <div class="cart-item">
+
+
+            <span>
+
+                ${item.naam}
+
+            </span>
+
+
+
+            <span>
+
+                € ${Number(item.prijs)
+                .toFixed(2)
+                .replace(".",",")}
+
+            </span>
+
+
+
+
+            <button
+
+            class="remove-item"
+
+            onclick="verwijderItem(${index})">
+
+                X
+
+            </button>
+
+
+
+        </div>
+
+
+        `;
+
+
+
+    });
+
+
+
+
+
+
+    lijst.innerHTML = html;
+
+
+
+    totaal.innerHTML =
+
+    bedrag
+    .toFixed(2)
+    .replace(".",",");
+
+
+
+}
+
+
+
+
+
+
+
+
+function verwijderItem(index){
+
+
+    winkelwagen.splice(index,1);
+
+
+    updateCart();
+
+
+    toonWinkelwagen();
+
+
+}
+
+
+
+
+
+
+
+
+
 // ===============================
 // MENU LADEN
 // ===============================
@@ -212,7 +270,10 @@ function voegToeAanWinkelwagen(gerecht){
 async function laadMenu(){
 
 
-    const menu = document.getElementById("prijzen");
+
+    const menu =
+    document.getElementById("prijzen");
+
 
 
     if(!menu){
@@ -223,26 +284,33 @@ async function laadMenu(){
 
 
 
+
+
+
     menu.innerHTML = `
 
-        <div class="loading">
+    <div class="loading">
 
-            🍜 Menu wordt geladen...
+        🍜 Menu wordt geladen...
 
-        </div>
+    </div>
 
     `;
 
 
 
 
-    const { data, error } = await client
+
+
+
+    const {data,error} = await client
 
     .from("Prijzen")
 
     .select("*")
 
-    .order("id", {ascending:true});
+    .order("id",{ascending:true});
+
 
 
 
@@ -250,14 +318,19 @@ async function laadMenu(){
 
     if(error){
 
+
         console.log(error);
+
 
         menu.innerHTML =
         "Menu kan niet geladen worden.";
 
+
         return;
 
+
     }
+
 
 
 
@@ -270,23 +343,30 @@ async function laadMenu(){
 
 
 
-    data.forEach(gerecht => {
 
+    data.forEach(gerecht=>{
 
 
         const categorie =
+
         gerecht.categorie || "Ongecategoriseerd";
+
 
 
 
         if(!categorieen[categorie]){
 
-            categorieen[categorie] = [];
+
+            categorieen[categorie]=[];
+
 
         }
 
 
+
+
         categorieen[categorie].push(gerecht);
+
 
 
     });
@@ -296,29 +376,37 @@ async function laadMenu(){
 
 
 
-    let html = "";
+
+    let html="";
 
 
 
 
 
 
-    Object.keys(categorieen).forEach(categorie => {
+
+
+    Object.keys(categorieen).forEach(categorie=>{
 
 
 
         html += `
 
+
         <div class="menu-categorie">
 
 
-        <h2>
+            <h2>
 
-        ${categorie}
+                ${categorie}
 
-        </h2>
+            </h2>
+
+
 
         `;
+
+
 
 
 
@@ -330,15 +418,21 @@ async function laadMenu(){
 
 
 
-        categorieen[categorie].forEach(item => {
+
+
+
+        categorieen[categorie].forEach(item=>{
 
 
 
             if(!gerechten[item.naam]){
 
-                gerechten[item.naam] = [];
+
+                gerechten[item.naam]=[];
+
 
             }
+
 
 
             gerechten[item.naam].push(item);
@@ -353,7 +447,8 @@ async function laadMenu(){
 
 
 
-        Object.keys(gerechten).forEach(naam => {
+
+        Object.keys(gerechten).forEach(naam=>{
 
 
 
@@ -361,19 +456,21 @@ async function laadMenu(){
 
 
 
+
+
+
             html += `
+
 
 
             <div class="menu-card">
 
 
-            <h3>
+                <h3>
 
-            ${naam}
+                    ${naam}
 
-            </h3>
-
-
+                </h3>
 
 
 
@@ -385,38 +482,44 @@ async function laadMenu(){
 
 
 
-            gerechten[naam].forEach(variant => {
+
+
+            gerechten[naam].forEach(variant=>{
 
 
 
                 html += `
 
+
                 <div class="variant">
 
 
-                <span>
+                    <span>
 
-                ${variant.variant || ""}
+                        ${variant.variant || ""}
 
-                </span>
+                    </span>
 
 
 
-                <span class="menu-price">
+                    <span class="menu-price">
 
-                € ${Number(variant.prijs)
-                .toFixed(2)
-                .replace(".",",")}
 
-                </span>
+                        € ${Number(variant.prijs)
 
+                        .toFixed(2)
+
+                        .replace(".",",")}
+
+
+                    </span>
 
 
                 </div>
 
 
-                `;
 
+                `;
 
 
             });
@@ -427,7 +530,9 @@ async function laadMenu(){
 
 
 
+
             html += `
+
 
 
             <button
@@ -436,7 +541,10 @@ async function laadMenu(){
 
             onclick='voegToeAanWinkelwagen(${JSON.stringify(item)})'>
 
-            🛒 Toevoegen
+
+
+                🛒 Toevoegen
+
 
 
             </button>
@@ -446,11 +554,13 @@ async function laadMenu(){
             </div>
 
 
+
             `;
 
 
 
         });
+
 
 
 
@@ -482,12 +592,21 @@ async function laadMenu(){
 
 
 
-laadMenu();
+
+
+
+// ===============================
+// KNOPPEN
+// ===============================
+
+
 document.addEventListener("DOMContentLoaded",()=>{
+
 
 
     const knop =
     document.getElementById("cartButton");
+
 
 
     const sluiten =
@@ -495,20 +614,37 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 
+
     if(knop){
 
-        knop.onclick=openCart;
+
+        knop.onclick = openCart;
+
 
     }
 
 
 
+
     if(sluiten){
 
-        sluiten.onclick=closeCart;
+
+        sluiten.onclick = closeCart;
+
 
     }
 
 
 
 });
+
+
+
+
+
+
+
+
+// START
+
+laadMenu();
