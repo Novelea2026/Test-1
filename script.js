@@ -85,7 +85,156 @@ function openCart(){
 
 
 
+async function plaatsBestelling(){
 
+
+    const naam =
+    document.getElementById("naam").value;
+
+
+
+    const telefoon =
+    document.getElementById("telefoon").value;
+
+
+
+    const afhaaltijd =
+    document.getElementById("ophaaltijd").value;
+
+
+
+    const opmerking =
+    document.getElementById("opmerking").value;
+
+
+
+
+    if(
+        naam === "" ||
+        telefoon === "" ||
+        afhaaltijd === ""
+    ){
+
+        alert(
+        "Vul naam, telefoonnummer en afhaaltijd in."
+        );
+
+        return;
+
+    }
+
+
+
+
+
+
+    if(winkelwagen.length === 0){
+
+        alert(
+        "Uw winkelwagen is leeg."
+        );
+
+        return;
+
+    }
+
+
+
+
+
+
+    let totaal = 0;
+
+
+    winkelwagen.forEach(item=>{
+
+        totaal += Number(item.prijs);
+
+    });
+
+
+
+
+
+
+
+    const {data,error} = await client
+
+    .from("Bestellingen")
+
+    .insert([{
+
+
+        naam:naam,
+
+
+        telefoon:telefoon,
+
+
+        afhaaltijd:afhaaltijd,
+
+
+        opmerking:opmerking,
+
+
+        gerechten:winkelwagen,
+
+
+        totaal:totaal,
+
+
+        status:"Nieuw"
+
+
+
+    }]);
+
+
+
+
+
+
+
+
+    if(error){
+
+
+        console.log(error);
+
+
+        alert(
+        "Bestelling opslaan mislukt."
+        );
+
+
+        return;
+
+
+    }
+
+
+
+
+
+
+
+    alert(
+    "Bedankt! Uw bestelling is ontvangen."
+    );
+
+
+
+
+    winkelwagen=[];
+
+
+    updateCart();
+
+
+    closeCart();
+
+
+}
 
 function closeCart(){
 
