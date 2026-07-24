@@ -21,6 +21,154 @@ let winkelwagen = [];
 
 
 function updateCart(){
+function openCart(){
+
+    const popup = document.getElementById("cartPopup");
+
+    if(popup){
+
+        popup.style.display="flex";
+
+    }
+
+
+    toonWinkelwagen();
+
+}
+
+
+
+
+
+function closeCart(){
+
+    const popup = document.getElementById("cartPopup");
+
+    if(popup){
+
+        popup.style.display="none";
+
+    }
+
+}
+
+
+
+
+
+function toonWinkelwagen(){
+
+
+    const lijst =
+    document.getElementById("cartItems");
+
+
+    const totaal =
+    document.getElementById("cartTotal");
+
+
+
+    if(!lijst){
+
+        return;
+
+    }
+
+
+
+    if(winkelwagen.length === 0){
+
+        lijst.innerHTML =
+        "Uw winkelwagen is leeg.";
+
+        totaal.innerHTML="0.00";
+
+        return;
+
+    }
+
+
+
+    let html="";
+
+    let bedrag=0;
+
+
+
+    winkelwagen.forEach((item,index)=>{
+
+
+        bedrag += Number(item.prijs);
+
+
+
+        html += `
+
+
+        <div class="cart-item">
+
+
+            <span>
+
+            ${item.naam}
+
+            </span>
+
+
+
+            <span>
+
+            € ${Number(item.prijs)
+            .toFixed(2)
+            .replace(".",",")}
+
+            </span>
+
+
+
+            <button
+
+            class="remove-item"
+
+            onclick="verwijderItem(${index})">
+
+            X
+
+            </button>
+
+
+        </div>
+
+
+        `;
+
+
+    });
+
+
+
+    lijst.innerHTML=html;
+
+
+    totaal.innerHTML =
+    bedrag.toFixed(2).replace(".",",");
+
+
+}
+
+
+
+
+
+function verwijderItem(index){
+
+    winkelwagen.splice(index,1);
+
+    updateCart();
+
+    toonWinkelwagen();
+
+}
 
     const teller = document.getElementById("cartCount");
 
