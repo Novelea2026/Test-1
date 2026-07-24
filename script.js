@@ -483,3 +483,32 @@ async function laadMenu(){
 
 
 laadMenu();
+document.addEventListener("DOMContentLoaded",()=>{
+
+
+    const knop =
+    document.getElementById("cartButton");
+
+
+    const sluiten =
+    document.getElementById("closeCart");
+
+
+
+    if(knop){
+
+        knop.onclick=openCart;
+
+    }
+
+
+
+    if(sluiten){
+
+        sluiten.onclick=closeCart;
+
+    }
+
+
+
+});
