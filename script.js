@@ -805,3 +805,10 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 });
+
+
+// ===============================
+// START WEBSITE
+// ===============================
+
+laadMenu();
