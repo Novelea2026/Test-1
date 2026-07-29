@@ -3,111 +3,333 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>Betaling | Pie-Nong-Thai</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="style.css">
+    <title>Betaling | Pie-Nong-Thai</title>
+
+    <link rel="stylesheet" href="betaling.css">
 
 </head>
 
+
 <body>
 
-<div class="payment-page">
 
-    <div class="payment-box">
+<div class="betaling-container">
 
-        <h1>🎉 Bedankt voor uw bestelling!</h1>
 
-        <p class="payment-text">
+    <h1>
+        Bedankt voor uw bestelling!
+    </h1>
 
-            Uw bestelling is succesvol ontvangen.
 
-        </p>
+    <p class="intro">
+
+        Uw bestelling is ontvangen.
+        Rond hieronder de betaling af.
+
+    </p>
+
+
+
+    <div class="betaal-box">
+
 
         <h2>
-
-            Totaalbedrag
-
+            Bankgegevens
         </h2>
 
-        <div class="payment-price">
 
-            € <span id="betaalBedrag"></span>
+
+        <div class="gegevens">
+
+
+            <p>
+
+                <strong>IBAN:</strong><br>
+
+                NL45 ABNA 0132 9827 73
+
+            </p>
+
+
+
+            <button onclick="kopieerIBAN()">
+
+                📋 Kopieer IBAN
+
+            </button>
+
+
+
+            <p>
+
+                <strong>Naam:</strong><br>
+
+                Pie-Nong-Thai
+
+            </p>
+
+
+
+            <p>
+
+                <strong>Bedrag:</strong><br>
+
+                € <span id="bedrag">
+                0,00
+                </span>
+
+            </p>
+
+
+
+            <p>
+
+                <strong>Omschrijving:</strong><br>
+
+                <span id="omschrijving">
+                Bestelling Pie-Nong-Thai
+                </span>
+
+            </p>
+
+
+
+            <button onclick="kopieerOmschrijving()">
+
+                📋 Kopieer omschrijving
+
+            </button>
+
 
         </div>
 
-        <hr>
-
-        <h3>Bankgegevens</h3>
-
-        <p>
-
-            <strong>IBAN</strong><br>
-            NL45 ABNA 01329 82773
-
-        </p>
-
-        <p>
-
-            <strong>Rekeninghouder</strong><br>
-            Pie-Nong-Thai
-
-        </p>
-
-        <p>
-
-            <strong>Omschrijving</strong><br>
-
-            <span id="omschrijving"></span>
-
-        </p>
-
-        <button id="copyIban" class="button">
-
-            IBAN kopiëren
-
-        </button>
-
-        <br><br>
-
-        <p>
-
-            Zodra wij uw betaling hebben ontvangen,
-            beginnen wij direct met het bereiden van uw bestelling.
-
-        </p>
-
-        <a href="index.html" class="button">
-
-            Terug naar de website
-
-        </a>
 
     </div>
 
+
+
+
+
+    <div class="qr-box">
+
+
+        <h2>
+            Betalen met QR-code
+        </h2>
+
+
+        <p>
+
+            Scan deze QR-code met uw bank-app.
+
+        </p>
+
+
+        <img id="qrCode"
+        src=""
+        alt="Betaal QR-code">
+
+
+    </div>
+
+
+
+
+
+
+    <div class="bewijs-box">
+
+
+        <h2>
+            Belangrijk bij afhalen
+        </h2>
+
+
+        <p>
+
+            Laat na het betalen uw
+            <strong>betaalbewijs of screenshot</strong>
+            zien bij het afhalen.
+
+        </p>
+
+
+        <p>
+
+            Zo kunnen wij uw betaling snel controleren
+            en uw bestelling direct meegeven.
+
+        </p>
+
+
+    </div>
+
+
+
+
+
+
+    <div class="afhaal-box">
+
+
+        <h2>
+            Uw afhaaltijd
+        </h2>
+
+
+        <p id="afhaaltijd">
+
+            Wordt geladen...
+
+        </p>
+
+
+    </div>
+
+
+
+
+
+
+    <button class="betaald-button"
+    onclick="betalingVoltooid()">
+
+
+        ✅ Ik heb betaald
+
+
+    </button>
+
+
+
 </div>
+
+
+
+
+
+
 
 <script>
 
-document.getElementById("betaalBedrag").innerHTML =
-localStorage.getItem("bedrag");
+
+let bedrag =
+localStorage.getItem("bedrag")
+|| "0,00";
+
+
+let omschrijving =
+localStorage.getItem("omschrijving")
+|| "Bestelling Pie-Nong-Thai";
+
+
+
+let afhaaltijd =
+localStorage.getItem("afhaaltijd")
+|| "Niet gekozen";
+
+
+
+
+
+document.getElementById("bedrag").innerHTML =
+bedrag;
+
 
 document.getElementById("omschrijving").innerHTML =
-localStorage.getItem("omschrijving");
+omschrijving;
 
-document.getElementById("copyIban").onclick = function(){
 
-navigator.clipboard.writeText(
-"NL45 ABNA 01329 82773"
-);
+document.getElementById("afhaaltijd").innerHTML =
+afhaaltijd;
 
-alert("IBAN gekopieerd.");
 
-};
+
+
+
+
+function kopieerIBAN(){
+
+
+    navigator.clipboard.writeText(
+        "NL45ABNA0132982773"
+    );
+
+
+    alert(
+        "IBAN gekopieerd"
+    );
+
+
+}
+
+
+
+
+
+
+function kopieerOmschrijving(){
+
+
+    navigator.clipboard.writeText(
+        omschrijving
+    );
+
+
+    alert(
+        "Omschrijving gekopieerd"
+    );
+
+
+}
+
+
+
+
+
+
+function betalingVoltooid(){
+
+
+    window.location.href =
+    "bedankt.html";
+
+
+}
+
+
+
+
+
+
+// QR CODE MAKEN
+
+let qrTekst =
+"BCD\n001\n1\nSCT\nABNANL2A\nPie-Nong-Thai\nNL45ABNA0132982773\nEUR"
++
+bedrag.replace(",",".")
++
+"\n"
++
+omschrijving;
+
+
+
+document.getElementById("qrCode").src =
+
+"https://api.qrserver.com/v1/create-qr-code/?size=250x250&data="
++
+encodeURIComponent(qrTekst);
+
+
 
 </script>
+
+
 
 </body>
 
