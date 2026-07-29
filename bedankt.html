@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bedankt voor uw bestelling | Pie-Nong-Thai</title>
+
+<link rel="stylesheet" href="betaling.css">
+
+</head>
+
+
+<body>
+
+
+<div class="betaling-container">
+
+
+    <div class="betaal-box">
+
+
+        <h1>
+            ✅ Bedankt!
+        </h1>
+
+
+        <h2>
+            Uw bestelling is ontvangen
+        </h2>
+
+
+        <p class="intro">
+
+            Wij hebben uw bestelling ontvangen.
+            Wij maken uw bestelling klaar zodra de betaling is gecontroleerd.
+
+        </p>
+
+
+
+        <div class="gegevens">
+
+
+            <p>
+
+                🕒 Uw gekozen afhaaltijd:
+
+            </p>
+
+
+            <h2 id="tijd">
+
+            </h2>
+
+
+        </div>
+
+
+
+        <p>
+
+            Vergeet niet uw betaalbewijs mee te nemen
+            wanneer u uw bestelling komt ophalen.
+
+        </p>
+
+
+
+        <br>
+
+
+        <button onclick="window.location.href='index.html'">
+
+            Terug naar website
+
+        </button>
+
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+const tijd =
+localStorage.getItem("afhaaltijd");
+
+
+if(tijd){
+
+
+    document.getElementById("tijd").innerHTML =
+    tijd;
+
+
+}
+
+
+</script>
+
+
+
+</body>
+
+</html>
