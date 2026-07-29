@@ -951,3 +951,50 @@ if(languageSwitcher){
 
 
 }
+// ===============================
+// HAMBURGER MENU
+// ===============================
+
+const hamburger = document.getElementById("hamburger");
+
+const navMenu = document.getElementById("navMenu");
+
+
+if(hamburger && navMenu){
+
+
+    hamburger.addEventListener("click", ()=>{
+
+
+        navMenu.classList.toggle("active");
+
+
+    });
+
+
+}
+
+
+
+// MENU SLUITEN ALS JE OP EEN LINK KLIKT
+
+const menuLinks = document.querySelectorAll(".nav-menu a");
+
+
+menuLinks.forEach(link=>{
+
+
+    link.addEventListener("click", ()=>{
+
+
+        if(navMenu){
+
+            navMenu.classList.remove("active");
+
+        }
+
+
+    });
+
+
+});
