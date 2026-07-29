@@ -959,133 +959,157 @@ nav ul{
 ================================ */
 
 
-@media (max-width: 768px) {
+.hamburger{
+
+    display:none;
+
+}
 
 
 
-    header {
+.nav-menu{
 
-        padding: 10px 20px;
+    display:flex;
 
-    }
+    align-items:center;
 
+    gap:30px;
 
-
-    nav {
-
-        display: flex;
-
-        justify-content: space-between;
-
-        align-items: center;
-
-        position: relative;
-
-    }
+}
 
 
 
+.nav-menu ul{
 
-    .logo {
+    display:flex;
 
-        font-size: 24px;
+    gap:25px;
 
-    }
+    list-style:none;
 
+    margin:0;
 
+    padding:0;
 
-
-
-    .hamburger {
-
-        display: block;
-
-    }
+}
 
 
 
 
 
-
-    .nav-menu {
-
-        position: absolute;
-
-        top: 60px;
-
-        left: 0;
-
-        width: 100%;
+@media(max-width:768px){
 
 
-        background: white;
+    header{
 
-
-        display: none;
-
-
-        flex-direction: column;
-
-
-        align-items: center;
-
-
-        padding: 20px 0;
-
-
-        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-
-
-        z-index: 999;
+        padding:10px 20px;
 
     }
 
 
 
+    nav{
 
+        display:flex;
 
-    .nav-menu.active {
+        flex-direction:row;
 
-        display: flex;
+        justify-content:space-between;
 
-    }
-
-
-
-
-
-    .nav-menu ul {
-
-        flex-direction: column;
-
-
-        text-align: center;
-
-
-        gap: 20px;
-
+        align-items:center;
 
     }
 
 
 
+    .logo{
 
-
-    .nav-menu a {
-
-        font-size: 17px;
+        font-size:24px;
 
     }
 
 
 
+    .hamburger{
+
+        display:block;
+
+        background:none;
+
+        border:none;
+
+        font-size:32px;
+
+        cursor:pointer;
+
+        color:#3b2a1a;
+
+    }
 
 
-    #languageSwitcher {
 
-        margin-top: 15px;
+    .nav-menu{
 
-        padding: 8px;
+
+        position:absolute;
+
+        top:70px;
+
+        left:0;
+
+        width:100%;
+
+        background:white;
+
+        display:none;
+
+        flex-direction:column;
+
+        align-items:center;
+
+        padding:25px 0;
+
+        box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+    }
+
+
+
+    .nav-menu.active{
+
+        display:flex;
+
+    }
+
+
+
+    .nav-menu ul{
+
+        display:flex;
+
+        flex-direction:column;
+
+        gap:20px;
+
+        text-align:center;
+
+    }
+
+
+
+    .nav-menu a{
+
+        font-size:18px;
+
+        color:#3b2a1a;
+
+    }
+
+
+
+    #languageSwitcher{
+
+        margin-top:20px;
 
     }
 
