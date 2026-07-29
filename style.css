@@ -815,4 +815,204 @@ nav ul{
 
 
 
+
+/* ===============================
+   HAMBURGER MENU
+================================ */
+
+
+.hamburger {
+
+    display: none;
+
+    background: none;
+
+    border: none;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+}
+
+
+
+
+
+.nav-menu {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+}
+
+
+
+.nav-menu ul {
+
+    display: flex;
+
+    list-style: none;
+
+    gap: 30px;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+
+
+.nav-menu a {
+
+    text-decoration: none;
+
+}
+
+
+
+
+
+/* ===============================
+   MOBIELE VERSIE
+================================ */
+
+
+@media (max-width: 768px) {
+
+
+
+    header {
+
+        padding: 10px 20px;
+
+    }
+
+
+
+    nav {
+
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+        position: relative;
+
+    }
+
+
+
+
+    .logo {
+
+        font-size: 24px;
+
+    }
+
+
+
+
+
+    .hamburger {
+
+        display: block;
+
+    }
+
+
+
+
+
+
+    .nav-menu {
+
+        position: absolute;
+
+        top: 60px;
+
+        left: 0;
+
+        width: 100%;
+
+
+        background: white;
+
+
+        display: none;
+
+
+        flex-direction: column;
+
+
+        align-items: center;
+
+
+        padding: 20px 0;
+
+
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
+
+        z-index: 999;
+
+    }
+
+
+
+
+
+    .nav-menu.active {
+
+        display: flex;
+
+    }
+
+
+
+
+
+    .nav-menu ul {
+
+        flex-direction: column;
+
+
+        text-align: center;
+
+
+        gap: 20px;
+
+
+    }
+
+
+
+
+
+    .nav-menu a {
+
+        font-size: 17px;
+
+    }
+
+
+
+
+
+    #languageSwitcher {
+
+        margin-top: 15px;
+
+        padding: 8px;
+
+    }
+
+
+
 }
