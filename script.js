@@ -445,17 +445,14 @@ function verwijderItem(index){
 
 
 // ===============================
-// MENU LADEN UIT SUPABASE
+// MENU LADEN
 // ===============================
-
 
 async function laadMenu(){
 
 
-
     const menu =
     document.getElementById("prijzen");
-
 
 
     if(!menu){
@@ -463,9 +460,6 @@ async function laadMenu(){
         return;
 
     }
-
-
-
 
 
 
@@ -482,9 +476,6 @@ async function laadMenu(){
 
 
 
-
-
-
     const {data,error} = await client
 
     .from("Prijzen")
@@ -496,25 +487,16 @@ async function laadMenu(){
 
 
 
-
-
     if(error){
 
-
         console.log(error);
-
 
         menu.innerHTML =
         "Menu kan niet geladen worden.";
 
-
         return;
 
-
     }
-
-
-
 
 
 
@@ -523,32 +505,21 @@ async function laadMenu(){
 
 
 
-
-
-
     data.forEach(gerecht=>{
 
 
         const categorie =
-
         gerecht.categorie || "Ongecategoriseerd";
-
-
 
 
         if(!categorieen[categorie]){
 
-
-            categorieen[categorie] = [];
-
+            categorieen[categorie]=[];
 
         }
 
 
-
-
         categorieen[categorie].push(gerecht);
-
 
 
     });
@@ -557,18 +528,12 @@ async function laadMenu(){
 
 
 
-
-
-    let html = "";
-
-
-
+    let html="";
 
 
 
 
     Object.keys(categorieen).forEach(categorie=>{
-
 
 
         html += `
@@ -589,13 +554,7 @@ async function laadMenu(){
 
 
 
-
-
-
-
-        let gerechten = {};
-
-
+        let gerechten={};
 
 
 
@@ -605,16 +564,12 @@ async function laadMenu(){
 
             if(!gerechten[item.naam]){
 
-
-                gerechten[item.naam] = [];
-
+                gerechten[item.naam]=[];
 
             }
 
 
-
             gerechten[item.naam].push(item);
-
 
 
         });
@@ -623,32 +578,20 @@ async function laadMenu(){
 
 
 
-
         Object.keys(gerechten).forEach(naam=>{
-
-
-
-            const item =
-            gerechten[naam][0];
-
-
-
-
 
 
             html += `
 
 
-
             <div class="menu-card">
 
 
-                <h3>
+            <h3>
 
-                    ${naam}
+                ${naam}
 
-                </h3>
-
+            </h3>
 
 
             `;
@@ -656,37 +599,58 @@ async function laadMenu(){
 
 
 
-
-
-
-
             gerechten[naam].forEach(variant=>{
-
 
 
                 html += `
 
 
+
                 <div class="variant">
 
 
-                    <span>
-
-                        ${variant.variant || ""}
-
-                    </span>
+                    <div>
 
 
+                        <strong>
 
-                    <span class="menu-price">
+                            ${variant.variant || "Normaal"}
 
-
-                        € ${Number(variant.prijs)
-                        .toFixed(2)
-                        .replace(".",",")}
+                        </strong>
 
 
-                    </span>
+
+                        <div class="menu-price">
+
+
+                            € ${Number(variant.prijs)
+
+                            .toFixed(2)
+
+                            .replace(".",",")}
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+                    <button
+
+                    class="add-cart"
+
+                    onclick='voegToeAanWinkelwagen(${JSON.stringify(variant)})'>
+
+
+                        🛒 Toevoegen
+
+
+                    </button>
+
 
 
                 </div>
@@ -696,12 +660,7 @@ async function laadMenu(){
                 `;
 
 
-
             });
-
-
-
-
 
 
 
@@ -709,23 +668,7 @@ async function laadMenu(){
             html += `
 
 
-
-            <button
-
-            class="add-cart"
-
-            onclick='voegToeAanWinkelwagen(${JSON.stringify(item)})'>
-
-
-                🛒 Toevoegen
-
-
-            </button>
-
-
-
             </div>
-
 
 
             `;
@@ -738,10 +681,11 @@ async function laadMenu(){
 
 
 
-
         html += `
 
+
         </div>
+
 
         `;
 
@@ -753,8 +697,10 @@ async function laadMenu(){
 
 
 
-
     menu.innerHTML = html;
+
+
+}
 
 
 
