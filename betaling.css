@@ -1,0 +1,273 @@
+/* ==========================
+   ALGEMEEN
+=========================== */
+
+*{
+
+    box-sizing:border-box;
+
+    margin:0;
+
+    padding:0;
+
+    font-family:Arial, sans-serif;
+
+}
+
+
+
+body{
+
+    background:#111;
+
+    color:white;
+
+    min-height:100vh;
+
+}
+
+
+
+/* ==========================
+   CONTAINER
+=========================== */
+
+
+.betaling-container{
+
+    width:90%;
+
+    max-width:600px;
+
+    margin:40px auto;
+
+    text-align:center;
+
+}
+
+
+
+/* ==========================
+   TITELS
+=========================== */
+
+
+h1{
+
+    color:#d4af37;
+
+    font-size:32px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+h2{
+
+    color:#d4af37;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.intro{
+
+    margin-bottom:30px;
+
+    line-height:1.6;
+
+}
+
+
+
+
+
+/* ==========================
+   BOXEN
+=========================== */
+
+
+.betaal-box,
+.qr-box,
+.bewijs-box,
+.afhaal-box{
+
+
+    background:#1c1c1c;
+
+    border:1px solid #d4af37;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+/* ==========================
+   GEGEVENS
+=========================== */
+
+
+.gegevens p{
+
+    margin:15px 0;
+
+    line-height:1.5;
+
+}
+
+
+
+strong{
+
+    color:#d4af37;
+
+}
+
+
+
+
+
+/* ==========================
+   KNOPPEN
+=========================== */
+
+
+button{
+
+
+    background:#d4af37;
+
+    color:#111;
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:8px;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin:8px;
+
+
+}
+
+
+
+button:hover{
+
+
+    opacity:0.8;
+
+
+}
+
+
+
+
+
+/* ==========================
+   QR CODE
+=========================== */
+
+
+.qr-box img{
+
+
+    width:250px;
+
+    height:250px;
+
+    background:white;
+
+    padding:10px;
+
+    border-radius:10px;
+
+
+}
+
+
+
+
+
+/* ==========================
+   BETAALD KNOP
+=========================== */
+
+
+.betaald-button{
+
+
+    width:100%;
+
+    margin-top:10px;
+
+    font-size:18px;
+
+    padding:15px;
+
+
+}
+
+
+
+
+
+/* ==========================
+   MOBIEL
+=========================== */
+
+
+@media(max-width:600px){
+
+
+    .betaling-container{
+
+
+        width:95%;
+
+
+    }
+
+
+
+    h1{
+
+
+        font-size:26px;
+
+
+    }
+
+
+
+    .betaal-box,
+    .qr-box,
+    .bewijs-box,
+    .afhaal-box{
+
+
+        padding:20px;
+
+
+    }
+
+
+}
