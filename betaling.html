@@ -1,1 +1,114 @@
+<!DOCTYPE html>
+<html lang="nl">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Betaling | Pie-Nong-Thai</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="payment-page">
+
+    <div class="payment-box">
+
+        <h1>🎉 Bedankt voor uw bestelling!</h1>
+
+        <p class="payment-text">
+
+            Uw bestelling is succesvol ontvangen.
+
+        </p>
+
+        <h2>
+
+            Totaalbedrag
+
+        </h2>
+
+        <div class="payment-price">
+
+            € <span id="betaalBedrag"></span>
+
+        </div>
+
+        <hr>
+
+        <h3>Bankgegevens</h3>
+
+        <p>
+
+            <strong>IBAN</strong><br>
+            NL45 ABNA 01329 82773
+
+        </p>
+
+        <p>
+
+            <strong>Rekeninghouder</strong><br>
+            Pie-Nong-Thai
+
+        </p>
+
+        <p>
+
+            <strong>Omschrijving</strong><br>
+
+            <span id="omschrijving"></span>
+
+        </p>
+
+        <button id="copyIban" class="button">
+
+            IBAN kopiëren
+
+        </button>
+
+        <br><br>
+
+        <p>
+
+            Zodra wij uw betaling hebben ontvangen,
+            beginnen wij direct met het bereiden van uw bestelling.
+
+        </p>
+
+        <a href="index.html" class="button">
+
+            Terug naar de website
+
+        </a>
+
+    </div>
+
+</div>
+
+<script>
+
+document.getElementById("betaalBedrag").innerHTML =
+localStorage.getItem("bedrag");
+
+document.getElementById("omschrijving").innerHTML =
+localStorage.getItem("omschrijving");
+
+document.getElementById("copyIban").onclick = function(){
+
+navigator.clipboard.writeText(
+"NL45 ABNA 01329 82773"
+);
+
+alert("IBAN gekopieerd.");
+
+};
+
+</script>
+
+</body>
+
+</html>
