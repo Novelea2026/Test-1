@@ -789,7 +789,7 @@ const translations = {
 
         navHome: "Home",
         navAbout: "Over ons",
-        navMenu: "Menu",
+        navMenuText: "Menu",
         navOpening: "Openingstijden",
         navContact: "Contact",
 
@@ -840,7 +840,7 @@ const translations = {
 
         navHome: "Home",
         navAbout: "About Us",
-        navMenu: "Menu",
+        navMenuText: "Menu",
         navOpening: "Opening Hours",
         navContact: "Contact",
 
