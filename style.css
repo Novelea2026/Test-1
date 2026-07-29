@@ -817,7 +817,7 @@ nav ul{
 
 
 /* ===============================
-   HAMBURGER MENU
+   HAMBURGER MENU NIEUW
 ================================ */
 
 
@@ -825,17 +825,17 @@ nav ul{
 
     display: none;
 
-    background: none;
-
     border: none;
 
-    font-size: 30px;
+    background: transparent;
+
+    font-size: 32px;
 
     cursor: pointer;
 
+    z-index: 1001;
+
 }
-
-
 
 
 
@@ -845,7 +845,7 @@ nav ul{
 
     align-items: center;
 
-    gap: 25px;
+    gap: 30px;
 
 }
 
@@ -855,9 +855,9 @@ nav ul{
 
     display: flex;
 
-    list-style: none;
+    gap: 25px;
 
-    gap: 30px;
+    list-style: none;
 
     margin: 0;
 
@@ -868,15 +868,109 @@ nav ul{
 
 
 
-.nav-menu a {
+@media (max-width: 768px) {
 
-    text-decoration: none;
+
+
+    nav {
+
+        position: relative;
+
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+    }
+
+
+
+
+    .hamburger {
+
+        display: block;
+
+    }
+
+
+
+
+    .nav-menu {
+
+
+        position: absolute;
+
+
+        top: 70px;
+
+
+        left: 0;
+
+
+        width: 100%;
+
+
+        background: white;
+
+
+        display: none;
+
+
+        flex-direction: column;
+
+
+        padding: 25px 0;
+
+
+        z-index: 1000;
+
+
+    }
+
+
+
+
+    .nav-menu.active {
+
+
+        display: flex;
+
+
+    }
+
+
+
+
+    .nav-menu ul {
+
+
+        flex-direction: column;
+
+
+        text-align: center;
+
+
+        gap: 20px;
+
+
+    }
+
+
+
+
+
+    .nav-menu a {
+
+
+        font-size: 18px;
+
+
+    }
+
+
 
 }
-
-
-
-
 
 /* ===============================
    MOBIELE VERSIE
