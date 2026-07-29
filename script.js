@@ -778,3 +778,68 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 laadMenu();
+
+// ===============================
+// TAAL WISSELEN
+// ===============================
+
+const translations = {
+
+    nl: {
+
+        home: "Home",
+        about: "Over ons",
+        menu: "Menu",
+        opening: "Openingstijden",
+        contact: "Contact"
+
+    },
+
+    en: {
+
+        home: "Home",
+        about: "About Us",
+        menu: "Menu",
+        opening: "Opening Hours",
+        contact: "Contact"
+
+    }
+
+};
+
+
+function changeLanguage(language){
+
+    const navLinks = document.querySelectorAll("nav ul li a");
+
+    navLinks[0].innerText = translations[language].home;
+    navLinks[1].innerText = translations[language].about;
+    navLinks[2].innerText = translations[language].menu;
+    navLinks[3].innerText = translations[language].opening;
+    navLinks[4].innerText = translations[language].contact;
+
+    localStorage.setItem("language", language);
+
+}
+
+
+const languageSwitcher =
+document.getElementById("languageSwitcher");
+
+
+if(languageSwitcher){
+
+    const savedLanguage =
+    localStorage.getItem("language") || "nl";
+
+    languageSwitcher.value = savedLanguage;
+
+    changeLanguage(savedLanguage);
+
+    languageSwitcher.addEventListener("change", function(){
+
+        changeLanguage(this.value);
+
+    });
+
+}
