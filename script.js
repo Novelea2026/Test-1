@@ -955,46 +955,58 @@ if(languageSwitcher){
 // HAMBURGER MENU
 // ===============================
 
-const hamburger = document.getElementById("hamburger");
-
-const navMenu = document.getElementById("navMenu");
+document.addEventListener("DOMContentLoaded",()=>{
 
 
-if(hamburger && navMenu){
+    const hamburger =
+    document.getElementById("hamburger");
 
 
-    hamburger.addEventListener("click", ()=>{
+    const navMenu =
+    document.getElementById("navMenu");
 
 
-        navMenu.classList.toggle("active");
+
+    if(hamburger && navMenu){
+
+
+        hamburger.onclick = function(){
+
+
+            navMenu.classList.toggle("active");
+
+
+        };
+
+
+    }
+
+
+
+
+    const menuLinks =
+    document.querySelectorAll(".nav-menu a");
+
+
+
+    menuLinks.forEach(link=>{
+
+
+        link.onclick = function(){
+
+
+            if(navMenu){
+
+                navMenu.classList.remove("active");
+
+            }
+
+
+        };
 
 
     });
 
-
-}
-
-
-
-// MENU SLUITEN ALS JE OP EEN LINK KLIKT
-
-const menuLinks = document.querySelectorAll(".nav-menu a");
-
-
-menuLinks.forEach(link=>{
-
-
-    link.addEventListener("click", ()=>{
-
-
-        if(navMenu){
-
-            navMenu.classList.remove("active");
-
-        }
-
-
-    });
 
 
 });
