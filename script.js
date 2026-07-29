@@ -787,59 +787,167 @@ const translations = {
 
     nl: {
 
-        home: "Home",
-        about: "Over ons",
-        menu: "Menu",
-        opening: "Openingstijden",
-        contact: "Contact"
+        navHome: "Home",
+        navAbout: "Over ons",
+        navMenu: "Menu",
+        navOpening: "Openingstijden",
+        navContact: "Contact",
+
+        heroSubtitle: "AUTHENTIEKE THAISE KEUKEN",
+        heroTitle: "Welkom bij Pie-Nong-Thai",
+        heroText: "Ontdek de echte smaken van Thailand. Dagelijks vers bereide gerechten, bereid met traditionele recepten, verse ingrediënten en veel passie.",
+        heroButton: "Bekijk het menu",
+
+        aboutTitle: "Over ons",
+        aboutText1: "Bij Pie-Nong-Thai bereiden wij authentieke Thaise gerechten met verse ingrediënten en traditionele recepten.",
+        aboutText2: "Van geurige curry's tot heerlijke noedelgerechten en verse soepen. Iedere maaltijd wordt met zorg bereid zodat u kunt genieten van de echte smaak van Thailand.",
+
+        menuTitle: "Ons Menu",
+        menuIntro: "Ontdek onze authentieke Thaise gerechten. Kies uit heerlijke voorgerechten, verse soepen, pittige salades en traditionele hoofdgerechten.",
+
+        whyTitle: "Waarom Pie-Nong-Thai?",
+        whyCard1Title: "Authentiek Thais",
+        whyCard1Text: "Onze gerechten worden bereid volgens traditionele Thaise recepten met de echte smaken van Thailand.",
+        whyCard2Title: "Verse ingrediënten",
+        whyCard2Text: "Wij gebruiken verse producten om iedere dag smaakvolle gerechten te bereiden.",
+        whyCard3Title: "Met passie bereid",
+        whyCard3Text: "Elke maaltijd wordt met zorg bereid zodat u kunt genieten van een echte Thaise ervaring.",
+
+        openingTitle: "Openingstijden",
+        weekLabel: "Maandag t/m Zondag",
+        weekHours: "17:00 - 21:30",
+
+        contactTitle: "Contact",
+        addressTitle: "Adres",
+        phoneTitle: "Telefoon",
+        restaurantTitle: "Restaurant",
+
+        orderTitle: "Bestel gemakkelijk",
+        callButton: "📞 Bel ons",
+        whatsappButton: "💬 WhatsApp",
+
+        reviewsTitle: "Wat onze klanten zeggen",
+        review1: "Heerlijk eten en echte Thaise smaken. Zeker een aanrader!",
+        review2: "Verse gerechten, vriendelijke service en grote porties.",
+        review3: "Een van de beste Thaise restaurants. Wij komen zeker terug.",
+
+        footerText: "Authentieke Thaise keuken"
 
     },
 
+
     en: {
 
-        home: "Home",
-        about: "About Us",
-        menu: "Menu",
-        opening: "Opening Hours",
-        contact: "Contact"
+        navHome: "Home",
+        navAbout: "About Us",
+        navMenu: "Menu",
+        navOpening: "Opening Hours",
+        navContact: "Contact",
+
+        heroSubtitle: "AUTHENTIC THAI CUISINE",
+        heroTitle: "Welcome to Pie-Nong-Thai",
+        heroText: "Discover the real flavours of Thailand. Freshly prepared dishes every day, made with traditional recipes, fresh ingredients and passion.",
+        heroButton: "View Menu",
+
+        aboutTitle: "About Us",
+        aboutText1: "At Pie-Nong-Thai we prepare authentic Thai dishes with fresh ingredients and traditional recipes.",
+        aboutText2: "From delicious curries to tasty noodle dishes and fresh soups. Every meal is prepared with care so you can enjoy the true taste of Thailand.",
+
+        menuTitle: "Our Menu",
+        menuIntro: "Discover our authentic Thai dishes. Choose from delicious starters, fresh soups, spicy salads and traditional main courses.",
+
+        whyTitle: "Why Pie-Nong-Thai?",
+        whyCard1Title: "Authentic Thai",
+        whyCard1Text: "Our dishes are prepared according to traditional Thai recipes with the real flavours of Thailand.",
+        whyCard2Title: "Fresh Ingredients",
+        whyCard2Text: "We use fresh products to prepare delicious dishes every day.",
+        whyCard3Title: "Prepared with Passion",
+        whyCard3Text: "Every meal is prepared with care so you can enjoy a real Thai experience.",
+
+        openingTitle: "Opening Hours",
+        weekLabel: "Monday to Sunday",
+        weekHours: "17:00 - 21:30",
+
+        contactTitle: "Contact",
+        addressTitle: "Address",
+        phoneTitle: "Phone",
+        restaurantTitle: "Restaurant",
+
+        orderTitle: "Order Easily",
+        callButton: "📞 Call Us",
+        whatsappButton: "💬 WhatsApp",
+
+        reviewsTitle: "What Our Customers Say",
+        review1: "Delicious food and real Thai flavours. Highly recommended!",
+        review2: "Fresh dishes, friendly service and large portions.",
+        review3: "One of the best Thai restaurants. We will definitely come back.",
+
+        footerText: "Authentic Thai Cuisine"
 
     }
 
 };
 
 
+
+
 function changeLanguage(language){
 
-    const navLinks = document.querySelectorAll("nav ul li a");
 
-    navLinks[0].innerText = translations[language].home;
-    navLinks[1].innerText = translations[language].about;
-    navLinks[2].innerText = translations[language].menu;
-    navLinks[3].innerText = translations[language].opening;
-    navLinks[4].innerText = translations[language].contact;
+    Object.keys(translations[language]).forEach(id=>{
+
+
+        const element = document.getElementById(id);
+
+
+        if(element){
+
+            element.innerText = translations[language][id];
+
+        }
+
+
+    });
+
+
 
     localStorage.setItem("language", language);
 
+
 }
+
+
+
 
 
 const languageSwitcher =
 document.getElementById("languageSwitcher");
 
 
+
 if(languageSwitcher){
+
 
     const savedLanguage =
     localStorage.getItem("language") || "nl";
 
+
     languageSwitcher.value = savedLanguage;
+
+
 
     changeLanguage(savedLanguage);
 
-    languageSwitcher.addEventListener("change", function(){
 
-        changeLanguage(this.value);
 
-    });
+    languageSwitcher.addEventListener(
+        "change",
+        function(){
+
+            changeLanguage(this.value);
+
+        }
+    );
+
 
 }
